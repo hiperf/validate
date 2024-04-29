@@ -32,7 +32,7 @@ function minLenght(dataValue, validatorConfigValue) {
  * @returns {boolean} 
  * @example
  * isNumber(5); // result = true
- * isNumber("John"); // result = false
+ * isNumber("f"); // result = false
  */
 function isNumber (dataValue) {
     return typeof dataValue == 'number';
@@ -212,7 +212,7 @@ function getError ({ validatorConfigValue, validatorConfig, validatorName, field
  * 
  * @returns {validate_result}
  */
-function validate (schema, data, lang) {
+function validate(schema, data, lang) {
 	const reservedWords = ['required'];
 	let isValid = true;
 	let errors = [];
@@ -239,9 +239,9 @@ function validate (schema, data, lang) {
 			if (reservedWords.includes(validatorName)) continue;
 
 			// Check if validator exist
-			if (!validators.hasOwnProperty(validatorName))
+			if (!validators.hasOwnProperty(validatorName) && validatorName != "newFunction") {
 				throw new Error(d("error-unknown-validator", { v: validatorName }, lang));
-
+			}
 			const validatorConfig = schemaItem[validatorName];
 			let validatorConfigValue = validatorConfig;
 
@@ -252,12 +252,17 @@ function validate (schema, data, lang) {
 
 				validatorConfigValue = validatorConfig.value;
 			}
-
-			const result = validators[validatorName](
-				dataValue,
-				validatorConfigValue,
-				validatorConfig
-			);
+			let result;
+			if (validatorName != "newFunction") {
+				 result = validators[validatorName](
+					dataValue,
+					validatorConfigValue,
+					validatorConfig
+				);
+			}
+			else {
+				 result = validatorConfig(dataValue);
+			}
 
 			if (!result) {
 				const error = getError({

@@ -4,7 +4,7 @@
  * @returns {boolean} 
  * @example
  * isNumber(5); // result = true
- * isNumber("John"); // result = false
+ * isNumber("f"); // result = false
  */
 function isNumber (dataValue) {
     return typeof dataValue == 'number';
