@@ -16,7 +16,28 @@ json schema validator
 
 **Example**  
 ```js
-const schema = {  name: {  	minLength: 3,  	isString: true  },  email: {  	isEmail: true  },  age: {  	min: 18,  	isNumber: {  		value: true,  		error: 'Custom isNumber error message'  	},  },};const data = {  name: 'John',  email: 'john@example.com',  age: 33,};const { isValid, errors } = validator(schema, data);
+const schema = {
+  name: {
+  	minLength: 3,
+  	isString: true
+  },
+  email: {
+  	isEmail: true
+  },
+  age: {
+  	min: 18,
+  	isNumber: {
+  		value: true,
+  		error: 'Custom isNumber error message'
+  	},
+  },
+};
+const data = {
+  name: 'John',
+  email: 'john@example.com',
+  age: 33,
+};
+const { isValid, errors } = validator(schema, data);
 ```
 
 ## Методы
@@ -65,7 +86,8 @@ const schema = {  name: {  	minLength: 3,  	isString: true  },  email: {  
 
 **Example**  
 ```js
-isArray(["John","Bob"]); // result = trueisArray("John"); // result = false
+isArray(["John","Bob"]); // result = true
+isArray("John"); // result = false
 ```
 <a name="isBoolean"></a>
 
@@ -81,7 +103,11 @@ isArray(["John","Bob"]); // result = trueisArray("John"); // result = false
 
 **Example**  
 ```js
-isBoolean(false, true); // result = falseisBoolean(true, false); // result = falseisBoolean(true, true); // result = trueisBoolean(false, false); // result = trueisBoolean('a', true); // result = false
+isBoolean(false, true); // result = false
+isBoolean(true, false); // result = false
+isBoolean(true, true); // result = true
+isBoolean(false, false); // result = true
+isBoolean('a', true); // result = false
 ```
 <a name="isDate"></a>
 
@@ -96,7 +122,8 @@ isBoolean(false, true); // result = falseisBoolean(true, false); // result = fa
 
 **Example**  
 ```js
-isDate("2024-04-25"); // result = trueisDate("John"); // result = false
+isDate("2024-04-25"); // result = true
+isDate("John"); // result = false
 ```
 <a name="isEmail"></a>
 
@@ -111,7 +138,8 @@ isDate("2024-04-25"); // result = trueisDate("John"); // result = false
 
 **Example**  
 ```js
-isEmail("John"); // result = falseisEmail("John@example.com"); // result = true
+isEmail("John"); // result = false
+isEmail("John@example.com"); // result = true
 ```
 <a name="isNumber"></a>
 
@@ -126,7 +154,8 @@ isEmail("John"); // result = falseisEmail("John@example.com"); // result = true
 
 **Example**  
 ```js
-isNumber(5); // result = trueisNumber("John"); // result = false
+isNumber(5); // result = true
+isNumber("John"); // result = false
 ```
 <a name="isObject"></a>
 
@@ -141,7 +170,8 @@ isNumber(5); // result = trueisNumber("John"); // result = false
 
 **Example**  
 ```js
-isObject({name:"John"}); // result = trueisObject("John"); // result = false
+isObject({name:"John"}); // result = true
+isObject("John"); // result = false
 ```
 <a name="isString"></a>
 
@@ -156,7 +186,8 @@ isObject({name:"John"}); // result = trueisObject("John"); // result = false
 
 **Example**  
 ```js
-isString(5); // result = falseisString("John"); // result = true
+isString(5); // result = false
+isString("John"); // result = true
 ```
 <a name="min"></a>
 
@@ -172,7 +203,8 @@ isString(5); // result = falseisString("John"); // result = true
 
 **Example**  
 ```js
-min(5,7); // result = falsemin(7,5); // result = true
+min(5,7); // result = false
+min(7,5); // result = true
 ```
 <a name="minLenght"></a>
 
@@ -188,6 +220,7 @@ min(5,7); // result = falsemin(7,5); // result = true
 
 **Example**  
 ```js
-minLenght("John",5); // result = falseminLenght("John",2); // result = true
+minLenght("John",5); // result = false
+minLenght("John",2); // result = true
 ```
 

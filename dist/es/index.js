@@ -30,7 +30,7 @@ function minLenght(dataValue, validatorConfigValue) {
  * @returns {boolean} 
  * @example
  * isNumber(5); // result = true
- * isNumber("John"); // result = false
+ * isNumber("f"); // result = false
  */
 function isNumber (dataValue) {
     return typeof dataValue == 'number';
@@ -210,7 +210,7 @@ function getError ({ validatorConfigValue, validatorConfig, validatorName, field
  * 
  * @returns {validate_result}
  */
-function validate (schema, data, lang) {
+function validate(schema, data, lang) {
 	const reservedWords = ['required'];
 	let isValid = true;
 	let errors = [];
@@ -237,9 +237,9 @@ function validate (schema, data, lang) {
 			if (reservedWords.includes(validatorName)) continue;
 
 			// Check if validator exist
-			if (!validators.hasOwnProperty(validatorName))
+			if (!validators.hasOwnProperty(validatorName) && validatorName != "custom") {
 				throw new Error(d("error-unknown-validator", { v: validatorName }, lang));
-
+			}
 			const validatorConfig = schemaItem[validatorName];
 			let validatorConfigValue = validatorConfig;
 
@@ -250,23 +250,35 @@ function validate (schema, data, lang) {
 
 				validatorConfigValue = validatorConfig.value;
 			}
+			if (validatorName === "custom") {
+				let custom = Array.isArray(validatorConfig) ? validatorConfig : [validatorConfig];
+				for (let element of custom) {
+					let result = element(dataValue);
+					if (!result.isValid) {
+						for (let element of result.errors) {
+							errors.push(element);
+						}
+					}
+				}
 
-			const result = validators[validatorName](
-				dataValue,
-				validatorConfigValue,
-				validatorConfig
-			);
-
-			if (!result) {
-				const error = getError({
-					validatorConfigValue,
-					validatorConfig,
-					validatorName,
-					fieldName,
+			} else {
+				const result = validators[validatorName](
 					dataValue,
-				});
-				errors.push(error);
+					validatorConfigValue,
+					validatorConfig
+				);
+				if (!result) {
+					const error = getError({
+						validatorConfigValue,
+						validatorConfig,
+						validatorName,
+						fieldName,
+						dataValue,
+					});
+					errors.push(error);
+				}
 			}
+
 		}
 	}
 
