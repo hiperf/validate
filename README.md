@@ -126,7 +126,7 @@ isEmail("John"); // result = falseisEmail("John@example.com"); // result = true
 
 **Example**  
 ```js
-isNumber(5); // result = trueisNumber("John"); // result = false
+isNumber(5); // result = trueisNumber("f"); // result = false
 ```
 <a name="isObject"></a>
 
