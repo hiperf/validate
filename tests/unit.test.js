@@ -7,11 +7,35 @@ test('json schema validate', () => {
 	function f(validator) {
 		//Bug: на массив с обектами
 		const schema = {
-			numberTest:
-			{
-				newFunction(dataValue) {
-					return typeof dataValue == 'number';
-				}
+			numberTest: {
+				custom: [
+					function(dataValue) {
+						let isValid=true;
+						let errors = [];
+						if(typeof dataValue != 'number')
+						{
+							isValid=false;
+							errors.push("This is not a number");
+							return {isValid,errors};
+						}
+						if(dataValue<5 || dataValue>10)
+						{
+							isValid=false;
+							errors.push("The number must be from 5 to 10");
+						}
+						return {isValid,errors};
+					},
+					function(dataValue) {
+						let isValid=true;
+						let errors = [];
+						if(dataValue % 1 !== 0)
+						{
+							isValid=false;
+							errors.push("The number is not an integer");
+						}
+						return {isValid,errors};
+					},
+				]
 			},
 			state: {
 				isBoolean: true,
@@ -37,7 +61,7 @@ test('json schema validate', () => {
 		};
 
 		const data = {
-			numberTest:1,
+			numberTest: 6,
 			state: true,
 			date_value: '2024-04-24',
 			name: 'John',

@@ -68,7 +68,7 @@ export function validate(schema, data, lang) {
 			if (reservedWords.includes(validatorName)) continue;
 
 			// Check if validator exist
-			if (!validators.hasOwnProperty(validatorName) && validatorName != "newFunction") {
+			if (!validators.hasOwnProperty(validatorName) && validatorName != "custom") {
 				throw new Error(d("error-unknown-validator", { v: validatorName }, lang));
 			}
 			const validatorConfig = schemaItem[validatorName];
@@ -81,28 +81,35 @@ export function validate(schema, data, lang) {
 
 				validatorConfigValue = validatorConfig.value;
 			}
-			let result;
-			if (validatorName != "newFunction") {
-				 result = validators[validatorName](
+			if (validatorName === "custom") {
+				let custom = Array.isArray(validatorConfig) ? validatorConfig : [validatorConfig];
+				for (let element of custom) {
+					let result = element(dataValue)
+					if (!result.isValid) {
+						for (let element of result.errors) {
+							errors.push(element);
+						}
+					}
+				}
+
+			} else {
+				const result = validators[validatorName](
 					dataValue,
 					validatorConfigValue,
 					validatorConfig
 				);
-			}
-			else {
-				 result = validatorConfig(dataValue);
+				if (!result) {
+					const error = getError({
+						validatorConfigValue,
+						validatorConfig,
+						validatorName,
+						fieldName,
+						dataValue,
+					});
+					errors.push(error);
+				}
 			}
 
-			if (!result) {
-				const error = getError({
-					validatorConfigValue,
-					validatorConfig,
-					validatorName,
-					fieldName,
-					dataValue,
-				});
-				errors.push(error);
-			}
 		}
 	}
 
