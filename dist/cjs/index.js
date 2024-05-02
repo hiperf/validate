@@ -212,7 +212,7 @@ function getError ({ validatorConfigValue, validatorConfig, validatorName, field
  * 
  * @returns {validate_result}
  */
-function validate(schema, data, lang) {
+function validate (schema, data, lang) {
 	const reservedWords = ['required'];
 	let isValid = true;
 	let errors = [];
@@ -289,4 +289,13 @@ function validate(schema, data, lang) {
 	return { errors, isValid };
 }
 
+exports.isArray = isArray;
+exports.isBoolean = isBoolean;
+exports.isDate = isDate;
+exports.isEmail = isEmail;
+exports.isNumber = isNumber;
+exports.isObject = isObject;
+exports.isString = isString;
+exports.min = min;
+exports.minLength = minLenght;
 exports.validate = validate;
