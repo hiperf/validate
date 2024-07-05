@@ -1,10 +1,9 @@
 {
-    "name": "re-validate",
+    "name": "@repharm/validate",
     "version": "1.0.0",
     "description": "json schema validator",
     "main": "index.js",
-    "author": "Vladislavs Korobovs <vladik_k@inbox.lv>",
-    "license": "ISC",
+    "license": "MIT",
     "exports": {
         "require": "./dist/cjs/index.js",
         "import": "./dist/es/index.js"
@@ -15,7 +14,8 @@
         "vitest": "^1.5.0"
     },
     "scripts": {
-        "test": "vitest",
+        "test": "vitest --run",
+        "test:watch": "vitest",
         "build": "rollup -c",
         "build:watch": "rollup -c --watch",
 		"docs": "node ./utils/docs.js"
