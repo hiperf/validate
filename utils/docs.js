@@ -1,19 +1,19 @@
-const fs = require("fs");
-const path = require("path");
-const jsdocToMarkdown = require("jsdoc-to-markdown");
+// Imports
+const fs = require('fs');
+const path = require('path');
+const jsdocToMarkdown = require('jsdoc-to-markdown');
 
+// Data
 const markDownValidator = jsdocToMarkdown.renderSync({ files: './src/*.js' });
-const markDownMethod = jsdocToMarkdown.renderSync({ files: './src/validators/*.js' });
+const markDownMethods = jsdocToMarkdown.renderSync({ files: './src/validators/*.js' });
 
 const markdown = `
-# Документация validator
-## Функция
+# Docs
+## validator
 ${markDownValidator}
-## Методы
-${markDownMethod}
+## methods
+${markDownMethods}
 `;
 
-// Путь и имя файла, куда нужно сохранить данные
-const filePath = path.resolve(__dirname, '../README.md');
-// Сохранение данных в файл
-fs.writeFileSync(filePath, markdown);
+// Save as README.md
+fs.writeFileSync(path.resolve(__dirname, '../README.md'), markdown);
