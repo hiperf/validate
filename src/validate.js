@@ -13,7 +13,7 @@ const reservedWords = ['required'];
  */
 
 /**
- * json schema validator
+ * Shema validator
  * @param {Object} schema - validation schema
  * @param {Object} data - income values
  * @param {string} [lang=en] - язык вывода ошибок
@@ -77,7 +77,7 @@ export default function(schema, data, lang) {
 			// Check if validatorConfig is an object
 			if (validators.isObject(validatorConfig)) {
 				if (!('value' in validatorConfig))
-					throw new Error(d("error-validator-config-is-missing-value", { v: validatorName }, lang));
+					throw new Error(d('error-validator-config-is-missing-value', { v: validatorName }, lang));
 
 				validatorConfigValue = validatorConfig.value;
 			}
