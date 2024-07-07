@@ -1,10 +1,10 @@
 /**
- * Проверка на тип object
- * @param {array} dataValue - входные параметры
+ * Check if value is Array
+ * @param {array} dataValue - input value
  * @returns {boolean} 
  * @example
- * isArray(["John","Bob"]); // result = true
- * isArray("John"); // result = false
+ * isArray(['John','Bob']); // true
+ * isArray('John'); // false
  */
 function isArray(dataValue) {
     return Array.isArray(dataValue);

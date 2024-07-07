@@ -1,16 +1,14 @@
 /**
- * Проверка на тип boolean и сравнения dataValue c validatorConfigValue
- * @param {boolean} dataValue - входные параметры
- * @param {boolean} validatorConfigValue - ожидаемое значения
+ * Check if value is Boolean
+ * @param {boolean} dataValue - input value
  * @returns {boolean} 
  * @example
- * isBoolean(false, true); // result = false
- * isBoolean(true, false); // result = false
- * isBoolean(true, true); // result = true
- * isBoolean(false, false); // result = true
- * isBoolean('a', true); // result = false
+ * isBoolean(false); // true
+ * isBoolean(true); // true
+ * isBoolean('John'); // false
+ * isBoolean(1); // false
  */
-function isBoolean (dataValue, validatorConfigValue) {
-	return typeof dataValue == 'boolean' && dataValue == validatorConfigValue;
+function isBoolean(dataValue) {
+	return typeof dataValue == 'boolean';
 }
 export default isBoolean;

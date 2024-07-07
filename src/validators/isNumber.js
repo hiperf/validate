@@ -1,12 +1,12 @@
 /**
- * Проверка на тип number
- * @param {number} dataValue - входные параметры
+ * Check if value is Number
+ * @param {number} dataValue - input value
  * @returns {boolean} 
  * @example
- * isNumber(5); // result = true
- * isNumber("f"); // result = false
+ * isNumber(5); // true
+ * isNumber('f'); // false
  */
-function isNumber (dataValue) {
+function isNumber(dataValue) {
     return typeof dataValue == 'number';
 }
 export default isNumber;

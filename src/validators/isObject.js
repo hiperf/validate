@@ -1,10 +1,10 @@
 /**
- * Проверка на тип object
- * @param {object} dataValue - входные параметры
+ * Check if value is Object
+ * @param {object} dataValue - input value
  * @returns {boolean} 
  * @example
- * isObject({name:"John"}); // result = true
- * isObject("John"); // result = false
+ * isObject({name: 'John'}); // true
+ * isObject('John'); // false
  */
 function isObject(dataValue) {
 	return typeof dataValue === 'object' &&

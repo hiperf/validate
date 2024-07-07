@@ -1,11 +1,11 @@
 /**
- * Проверка на минимальное значения
- * @param {number} dataValue - входные параметры
- * @param {number} validatorConfigValue - ожидаемое значения
+ * Check that number is >= min value
+ * @param {number} dataValue - input value
+ * @param {number} validatorConfigValue - min expected value
  * @returns {boolean} 
  * @example
- * min(5,7); // result = false
- * min(7,5); // result = true
+ * min(5,7); // false
+ * min(7,5); // true
  */
 function min(dataValue, validatorConfigValue) {
 	return dataValue >= validatorConfigValue;

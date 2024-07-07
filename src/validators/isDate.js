@@ -1,10 +1,12 @@
+// todo: validator function is very primitive, need more advance check
+
 /**
- * Проверка на тип даты
- * @param {string} dataValue - входные параметры
+ * Check if value is Date
+ * @param {string} dataValue - input value
  * @returns {boolean} 
  * @example
- * isDate("2024-04-25"); // result = true
- * isDate("John"); // result = false
+ * isDate('2024-04-25'); // true
+ * isDate('John'); // false
  */
 function isDate(dataValue) {
 	return !isNaN(Date.parse(dataValue));

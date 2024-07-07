@@ -1,10 +1,10 @@
 /**
- * Проверка на тип email
- * @param {email} dataValue - входные параметры
+ * Check if value is Email
+ * @param {string} dataValue - input value
  * @returns {boolean} 
  * @example
- * isEmail("John"); // result = false
- * isEmail("John@example.com"); // result = true
+ * isEmail('John'); // false
+ * isEmail('John@example.com'); // true
  */
 function isEmail(dataValue) {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(dataValue);
