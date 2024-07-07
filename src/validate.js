@@ -1,20 +1,23 @@
-/*
- * @typedef {Object} validate_result
- * @property {boolean} isValid
- * @property {string[]} errors
- */
-
+// Imports
 import validators from './validators/index';
 import getError from './utils/getError';
 import d from './utils/d';
 
+// Data
+const reservedWords = ['required'];
 
+/**
+ * @typedef {Object} ValidateResult
+ * @property {boolean} isValid
+ * @property {string[]} errors
+ */
 
 /**
  * json schema validator
- * @param {Object} schema - схема валидации
- * @param {Object} data - входные параметры
+ * @param {Object} schema - validation schema
+ * @param {Object} data - income values
  * @param {string} [lang=en] - язык вывода ошибок
+ * @returns {ValidateResult}
  * @example
  * const schema = {
  *   name: {
@@ -38,11 +41,8 @@ import d from './utils/d';
  *   age: 33,
  * };
  * const { isValid, errors } = validator(schema, data);
- * 
- * @returns {validate_result}
  */
-export default function (schema, data, lang) {
-	const reservedWords = ['required'];
+export default function(schema, data, lang) {
 	let isValid = true;
 	let errors = [];
 
@@ -68,8 +68,8 @@ export default function (schema, data, lang) {
 			if (reservedWords.includes(validatorName)) continue;
 
 			// Check if validator exist
-			if (!validators.hasOwnProperty(validatorName) && validatorName != "custom") {
-				throw new Error(d("error-unknown-validator", { v: validatorName }, lang));
+			if (!validators.hasOwnProperty(validatorName) && validatorName != 'custom') {
+				throw new Error(d('error-unknown-validator', { v: validatorName }, lang));
 			}
 			const validatorConfig = schemaItem[validatorName];
 			let validatorConfigValue = validatorConfig;
@@ -81,24 +81,29 @@ export default function (schema, data, lang) {
 
 				validatorConfigValue = validatorConfig.value;
 			}
-			if (validatorName === "custom") {
-				let custom = Array.isArray(validatorConfig) ? validatorConfig : [validatorConfig];
-				for (let element of custom) {
-					let result = element(dataValue)
-					if (!result.isValid) {
-						for (let element of result.errors) {
-							errors.push(element);
-						}
+
+			// If custom validator(s) used
+			if (validatorName === 'custom') {
+				// Make sure that customVaidators is Array
+				const customVaidators = Array.isArray(validatorConfig) ? validatorConfig : [validatorConfig];
+				
+				// Iterate custom validator(s)
+				for (let validator of customVaidators) {
+					const result = validator(dataValue);
+
+					for (let error of result.errors) {
+						errors.push(error);
 					}
 				}
 
 			} else {
-				const result = validators[validatorName](
+				const success = validators[validatorName](
 					dataValue,
 					validatorConfigValue,
 					validatorConfig
 				);
-				if (!result) {
+
+				if (!success) {
 					const error = getError({
 						validatorConfigValue,
 						validatorConfig,

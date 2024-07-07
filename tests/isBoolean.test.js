@@ -4,6 +4,7 @@ import * as es from './dist/es/index.js';
 
 test('isBoolean validator test', () => {
 	function f({ isBoolean }) {
+		
 		expect(isBoolean(false, true), 'Boolean should return true').toBe(false);
 		expect(isBoolean(true, false), 'Boolean should return true').toBe(false);
 		expect(isBoolean(true, true), 'Boolean should return true').toBe(true);
