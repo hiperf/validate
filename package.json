@@ -5,12 +5,21 @@
     "main": "index.js",
     "license": "MIT",
     "exports": {
-        "require": "./dist/cjs/index.js",
-        "import": "./dist/es/index.js"
+        ".": {
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/es/index.js"
+        },
+        "./slim": {
+            "require": "./dist/cjs/slim.js",
+            "import": "./dist/es/slim.js"
+        }
     },
     "devDependencies": {
         "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-replace": "^5.0.7",
+        "@rollup/plugin-terser": "^0.4.4",
         "jsdoc-to-markdown": "^8.0.1",
+        "rollup-plugin-bundle-size": "^1.0.3",
         "vitest": "^1.5.0"
     },
     "scripts": {
@@ -18,6 +27,6 @@
         "test:watch": "vitest",
         "build": "rollup -c",
         "build:watch": "rollup -c --watch",
-		"docs": "node ./utils/docs.js"
+        "docs": "node ./utils/docs.js"
     }
 }

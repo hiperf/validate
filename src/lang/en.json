@@ -6,5 +6,5 @@
     "error-minLength": "Min length should be \"%e\"",
     "error-isBoolean": "Value \"%v\" is not boolean or not equal \"%e\"",
     "error-validator-config-is-missing-value": "Validator \"%v\" config is an object, \"value\" key is required",
-    "error-unknown-validator": "Unknown validator \"%v\""
+    "error-unknown-validator": "Unknown validator \"%v\", make sure you incuded this validator"
 }

@@ -1,0 +1,1 @@
+export { default as validate } from './slimValidate.js';

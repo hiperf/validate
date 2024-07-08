@@ -1,22 +1,63 @@
-// Import
-ROLLUP_IMPORT_VALIDATORS; // libValidators
-ROLLUP_IMPORT_LOCALES; // libLocales
-import getError from './utils/getError';
-import d from './utils/d';
+function d(key, options = {}, lang = 'en', locales) {
+	if (!(lang in locales))
+		throw new Error(`Lang "${lang}" doesn't exist in locales object. Available locales - ${locales.join(', ')}`);
+
+	if (!(key in locales[lang]))
+		throw new Error(`Key "${key}" does not exist in "${lang}" dictionary`);
+
+	let result = locales[lang][key];
+
+	for (let key in options) {
+		result = result.replace(`%${key}`, options[key]);
+	}
+
+	return result;
+}
+
+/**
+ * Check if value is Object
+ * @param {object} dataValue - input value
+ * @returns {boolean} 
+ * @example
+ * isObject({name: 'John'}); // true
+ * isObject('John'); // false
+ */
+function isObject(dataValue) {
+	return typeof dataValue === 'object' &&
+		!Array.isArray(dataValue) &&
+		dataValue !== null;
+}
+
+/** 
+ * @typedef {object} GetErrorParams
+ * @property {*} validatorConfigValue - validator value
+ * @property {*} validatorConfig - validator config
+ * @property {string} validatorName - validator name
+ * @property {string} fieldName - field to validate
+ * @property {*} dataValue - validator input value
+ */
+
+/**
+ * Form and return error message
+ * @param {GetErrorParams} params 
+ * @returns {string}
+ */
+function getError({ validatorConfigValue, validatorConfig, validatorName, fieldName, dataValue, lang, locales }) {
+	let error = '';
+
+	if (isObject(validatorConfig)) {
+		if (!('value' in validatorConfig)) {
+			throw new Error('Missing "value" key in validator config');
+		}
+
+		if ('error' in validatorConfig) error = validatorConfig.error;
+	}
+
+	return error ? error : `${fieldName}: ` + d(`error-${validatorName}`, { e: validatorConfigValue, v: dataValue }, lang, locales);
+}
 
 // Data
 const reservedWords = ['required'];
-
-/**
- * Get item by key from user data or lib data
- * @param {string} name 
- * @param {Object} userData 
- * @param {Object} libData 
- * @returns {*}
- */
-function getItem(name, userData = {}, libData = {}) {
-	return (name in userData) ? userData[name] : ((name in libData) ? libData[name] : null);
-}
 
 /**
  * @typedef {Object} ValidateResult
@@ -64,14 +105,12 @@ function getItem(name, userData = {}, libData = {}) {
  * };
  * const { isValid, errors } = validator(schema, data);
  */
-export default function(schema, data, lang = 'en', options = {}) {
+function slimValidate(schema, data, lang = 'en', options = {}) {
 	let errors = [];
 
 	// Handle options
 	if (!('locales' in options)) options.locales = {};
 	if (!('validators' in options)) options.validators = {};
-
-	const locales = getItem(lang, options.locales, libLocales);
 
 	// Iterate schema items
 	for (let fieldName in schema) {
@@ -82,7 +121,7 @@ export default function(schema, data, lang = 'en', options = {}) {
 		// Id schema key does not exist in data
 		if (!data.hasOwnProperty(fieldName)) {
 			// If data key is required
-			if (isRequired) errors.push(d('field-required', { fieldName }, lang, locales));
+			if (isRequired) errors.push(d('field-required', { fieldName }, lang, options.locales));
 			continue;
 		}
 
@@ -94,19 +133,17 @@ export default function(schema, data, lang = 'en', options = {}) {
 			// Skip loop if validatorName is a reserved word
 			if (reservedWords.includes(validatorName)) continue;
 
-			const validator = getItem(validatorName, options.validators, libValidators);
-
 			// Check if validator exist
-			if (!validator && validatorName != 'custom') {
-				throw new Error(d('error-unknown-validator', { v: validatorName }, lang, locales));
+			if (!options.validators.hasOwnProperty(validatorName) && validatorName != 'custom') {
+				throw new Error(d('error-unknown-validator', { v: validatorName }, lang, options.locales));
 			}
 			const validatorConfig = schemaItem[validatorName];
 			let validatorConfigValue = validatorConfig;
 
 			// Check if validatorConfig is an object
-			if (getItem('isObject', options.validators, libValidators)(validatorConfig)) {
+			if (options.validators.isObject(validatorConfig)) {
 				if (!('value' in validatorConfig))
-					throw new Error(d('error-validator-config-is-missing-value', { v: validatorName }, lang, locales));
+					throw new Error(d('error-validator-config-is-missing-value', { v: validatorName }, lang, options.locales));
 
 				validatorConfigValue = validatorConfig.value;
 			}
@@ -126,7 +163,7 @@ export default function(schema, data, lang = 'en', options = {}) {
 				}
 
 			} else {
-				const success = validator(
+				const success = options.validators[validatorName](
 					dataValue,
 					validatorConfigValue,
 					validatorConfig
@@ -140,7 +177,7 @@ export default function(schema, data, lang = 'en', options = {}) {
 						fieldName,
 						dataValue,
 						lang,
-						locales
+						locales: options.locales
 					});
 					errors.push(error);
 				}
@@ -151,3 +188,5 @@ export default function(schema, data, lang = 'en', options = {}) {
 
 	return { isValid: errors.length === 0, errors };
 }
+
+export { slimValidate as validate };

@@ -4,12 +4,13 @@ import * as es from './dist/es/index.js';
 
 test('isBoolean validator test', () => {
 	function f({ isBoolean }) {
-		
-		expect(isBoolean(false, true), 'Boolean should return true').toBe(false);
-		expect(isBoolean(true, false), 'Boolean should return true').toBe(false);
-		expect(isBoolean(true, true), 'Boolean should return true').toBe(true);
-		expect(isBoolean(false, false), 'Boolean should return true').toBe(true);
-		expect(isBoolean('a', true), 'Boolean should return true').toBe(false);
+		// Positive
+		expect(isBoolean(false), 'Boolean should return true').toBe(true);
+		expect(isBoolean(true), 'Boolean should return true').toBe(true);
+
+		// Negative
+		expect(isBoolean('John'), 'String is not Boolean').toBe(false);
+		expect(isBoolean(1), 'Number is not Boolean').toBe(false);
 	}
 	f(cjs);
 	f(es);

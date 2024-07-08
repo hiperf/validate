@@ -1,3 +1,5 @@
 import en from '../lang/en.json';
 
-export default { en };
+const locales = { en };
+
+export default locales;

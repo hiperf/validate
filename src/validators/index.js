@@ -8,7 +8,7 @@ import isDate from './isDate';
 import isObject from './isObject';
 import isArray from './isArray';
 
-export default {
+const validators = {
 	min,
 	minLength,
 	isNumber,
@@ -19,3 +19,5 @@ export default {
 	isObject,
 	isArray,
 };
+
+export default validators;

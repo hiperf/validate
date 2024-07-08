@@ -1,4 +1,6 @@
 export { default as validate } from './validate.js';
+export { default as validators } from './validators/index.js';
+export { default as locales } from './lang/index.js';
 
 export { default as isArray } from './validators/isArray.js';
 export { default as isBoolean } from './validators/isBoolean.js';
