@@ -4,11 +4,11 @@ import * as es from './dist/es/index.js';
 
 test('isArray validator test', () => {
 	function f({ isArray }) {
-		// Positive tests
+		// Positive
 		expect(isArray(['John', 'Bob']), 'Array should return true').toBe(true);
 		expect(isArray([]), 'Empty array should return true').toBe(true);
 
-		// Negative tests
+		// Negative
 		expect(isArray('John'), 'String should return false').toBe(false);
 		expect(isArray(1), 'Number should return false').toBe(false);
 		expect(isArray({}), 'Object should return false').toBe(false);

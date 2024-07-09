@@ -9,8 +9,9 @@ test('isBoolean validator test', () => {
 		expect(isBoolean(true), 'Boolean should return true').toBe(true);
 
 		// Negative
-		expect(isBoolean('John'), 'String is not Boolean').toBe(false);
-		expect(isBoolean(1), 'Number is not Boolean').toBe(false);
+		expect(isBoolean('John'), 'String should return false').toBe(false);
+		expect(isBoolean(1), 'Number should return false').toBe(false);
+		expect(isBoolean(null), 'null should return false').toBe(false);
 	}
 	f(cjs);
 	f(es);

@@ -15,7 +15,7 @@ import isObject from '../validators/isObject';
  * @param {GetErrorParams} params 
  * @returns {string}
  */
-export default function({ validatorConfigValue, validatorConfig, validatorName, fieldName, dataValue, lang, locales }) {
+export default function({ validatorConfigValue, validatorConfig, validatorName, fieldName, dataValue, lang, userLocales, libLocales }) {
 	let error = '';
 
 	if (isObject(validatorConfig)) {
@@ -26,5 +26,5 @@ export default function({ validatorConfigValue, validatorConfig, validatorName, 
 		if ('error' in validatorConfig) error = validatorConfig.error;
 	}
 
-	return error ? error : `${fieldName}: ` + d(`error-${validatorName}`, { e: validatorConfigValue, v: dataValue }, lang, locales);
+	return error ? error : `${fieldName}: ` + d(`error-${validatorName}`, { e: validatorConfigValue, v: dataValue }, lang, userLocales, libLocales);
 }

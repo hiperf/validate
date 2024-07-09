@@ -3,6 +3,7 @@
     "error-isNumber": "Value \"%v\" should be number",
     "error-isString": "Value \"%v\" should be string",
     "error-isEmail": "\"%v\" is not a valid email",
+    "error-isDate": "\"%v\" is not a valid date",
     "error-minLength": "Min length should be \"%e\"",
     "error-isBoolean": "Value \"%v\" is not boolean or not equal \"%e\"",
     "error-validator-config-is-missing-value": "Validator \"%v\" config is an object, \"value\" key is required",

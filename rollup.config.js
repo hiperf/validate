@@ -1,50 +1,56 @@
+const fs = require('node:fs');
+const path = require('node:path');
 const json = require('@rollup/plugin-json');
 const replace = require('@rollup/plugin-replace');
 const bundleSize = require('rollup-plugin-bundle-size');
 const terser = require('@rollup/plugin-terser');
+const { strict } = require('node:assert');
 
-module.exports = [
-	{
-		input: 'src/index.js',
-		output: [
-			{
-				file: 'dist/es/index.js',
-				format: 'es',
-			},
-			{
-				file: 'dist/cjs/index.js',
-				format: 'cjs',
-			},
-		],
-		plugins: [
-			replace({
-				preventAssignment: true,
-				values: {
-					ROLLUP_IMPORT_VALIDATORS: "import libValidators from './validators/index'",
-					ROLLUP_IMPORT_LOCALES: "import libLocales from './lang/index'",
-				}
-			}),
-			json(),
-			//terser(),
-			bundleSize(),
-		],
-	},
-	{
-		input: 'src/slim.js',
-		output: [
-			{
-				file: 'dist/es/slim/index.js',
-				format: 'es',
-			},
-			{
-				file: 'dist/cjs/slim/index.js',
-				format: 'cjs',
-			},
-		],
-		plugins: [
-			json(),
-			//terser(),
-			bundleSize(),
-		],
+module.exports = (cliArg) => {
+	const rollupConfig = [];
+	const minify = 'config-minify' in cliArg && cliArg['config-minify'];
+	const sValidateBase = fs.readFileSync(path.resolve(__dirname, './src/rollup-import/validate-base.js'), {encoding: 'utf-8'});
+	const validators = fs.readdirSync(path.resolve(__dirname, './src/validators/')).filter(v => v !== 'index.js');
+
+	const plugins = [
+		replace({
+			preventAssignment: true,
+			values: {
+				ROLLUP_IMPORT_VALIDATE_BASE: sValidateBase,
+				ROLLUP_IMPORT_VALIDATE_CREATE: sValidateBase.replace('export default', 'return'),
+			}
+		}),
+		json(),
+		minify ? terser() : {},
+		bundleSize(),
+	];
+
+	function genConfig(fileName) {
+		return {
+			input: `src/${fileName}`,
+			output: [
+				{
+					file: `dist/es/${fileName}`,
+					format: 'es',
+					strict: false,
+				},
+				{
+					file: `dist/cjs/${fileName}`,
+					format: 'cjs',
+					strict: false,
+				},
+			],
+			plugins
+		}
 	}
-];
+	
+	rollupConfig.push(genConfig('index.js'));
+	rollupConfig.push(genConfig('slim.js'));
+	rollupConfig.push(genConfig('create.js'));
+
+	for (let fileName of validators) {
+		rollupConfig.push(genConfig(`validators/${fileName}`));
+	}
+	
+	return rollupConfig;
+}
