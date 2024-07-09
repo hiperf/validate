@@ -209,3 +209,45 @@ test('Create validate', () => {
 	f(validate_cjs);
 	f(validate_es);
 });
+
+test('Custom', () => {
+	const validate = es;
+	//import { validate } from '@repharm/validate';
+
+	const schema = {
+		name: {
+			minLength: 3,
+			isString: true,
+			custom(v) {
+				const isValid = /^[a-zA-Z-\., ]+$/.test(v);
+				const errors = [];
+
+				if (!isValid)
+					errors.push('Name can only consist of latin alphabet, ".", ",", "-", or "space" characters');
+
+				return { isValid, errors };
+			}
+		},
+		age: {
+			min: {
+				value: 18,
+				error: 'Minimal age is 18 y.o.'
+			},
+			isNumber: true
+		},
+		email: {
+			isEmail: true,
+		},
+	};
+
+	const data = {
+		name: 'John Doe, Jr.',
+		age: 15,
+		email: 'john.doe.jr@example.com',
+	};
+
+	const { isValid, errors } = validate(schema, data);
+
+	console.log('validate', isValid, errors);
+	
+});

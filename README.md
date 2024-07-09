@@ -1,17 +1,6 @@
 
 # Docs
 ## validator
-<a name="ValidateResult"></a>
-
-## ValidateResult : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| isValid | <code>boolean</code> | 
-| errors | <code>Array.&lt;string&gt;</code> | 
-
 
 ## methods
 ## Functions
