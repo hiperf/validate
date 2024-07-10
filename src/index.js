@@ -4,7 +4,6 @@ export { default as locales } from './lang/index.js';
 
 export { default as isArray } from './validators/isArray.js';
 export { default as isBoolean } from './validators/isBoolean.js';
-export { default as isDate } from './validators/isDate.js';
 export { default as isEmail } from './validators/isEmail.js';
 export { default as isNumber } from './validators/isNumber.js';
 export { default as isObject } from './validators/isObject.js';
