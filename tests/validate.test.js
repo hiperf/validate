@@ -47,9 +47,6 @@ function positive(validate) {
 		state: {
 			isBoolean: true,
 		},
-		dateValue: {
-			isDate: true,
-		},
 		name: {
 			minLength: 3,
 			isString: true,
@@ -70,13 +67,12 @@ function positive(validate) {
 	const data = {
 		numberTest: 6,
 		state: true,
-		dateValue: '2024-04-24',
 		name: 'John',
 		email: 'john@example.com',
 		age: 33,
 	};
 
-	return validate(schema, data, 'en', {locales, validators});
+	return validate(schema, data, {locales, validators});
 }
 
 function negative(validate) {
@@ -108,9 +104,6 @@ function negative(validate) {
 		state: {
 			isBoolean: true,
 		},
-		dateValue: {
-			isDate: true,
-		},
 		name: {
 			minLength: 3,
 			isString: true,
@@ -131,13 +124,12 @@ function negative(validate) {
 	const data = {
 		numberTest: '6',
 		state: {},
-		dateValue: 'abc',
 		name: 100,
 		email: 'john@example@com',
 		age: '33',
 	};
 
-	return validate(schema, data, 'en', {locales, validators});
+	return validate(schema, data, {locales, validators});
 }
 
 test('Validate test', () => {
@@ -175,8 +167,8 @@ test('Slim validate', () => {
 		assert.isEmpty(errors, 'errors is empty');
 	}
 
-	const slimValidate_cjs = (schema, data, lang) => slim_cjs(schema, data, lang, {locales, validators});
-	const slimValidate_es = (schema, data, lang) => slim_es(schema, data, lang, {locales, validators});
+	const slimValidate_cjs = (schema, data, lang) => slim_cjs(schema, data, {locales, validators});
+	const slimValidate_es = (schema, data, lang) => slim_es(schema, data, {locales, validators});
 	
 	f(slimValidate_cjs);
 	f(slimValidate_es);
@@ -219,10 +211,42 @@ test('Custom', () => {
 			message: '🐶 woof!'
 		};
 		
-		const { isValid, errors } = validate(schema, data, 'en', { validators, locales });
+		const { isValid, errors } = validate(schema, data, { validators, locales });
 
 		expect(isValid).toBe(false);
 		expect(errors.length, 'errors is not empty').toBe(1);
+	}
+	f(cjs);
+	f(es);
+});
+
+
+test('Locales test', () => {
+	function f(validate) {
+		const validators = {
+			isCatMessage: v => /🐈|😺|😸|😻|😽/.test(v)
+		};
+
+		const locales = {
+			en: { 'error-isCatMessage': 'Message should contain cat emoji! 😾' },
+			ru: { 'error-isCatMessage': 'В сообщение должны содержаться котики! 😾' },
+		};
+
+		const schema = {
+			message: {
+				isCatMessage: true,
+			}
+		};
+		
+		const data = {
+			message: '🐶 woof!'
+		};
+		
+		const { isValid, errors } = validate(schema, data, { lang: 'ru', validators, locales });
+
+		expect(isValid).toBe(false);
+		expect(errors.length, 'errors is not empty').toBe(1);
+		expect(errors[0], 'errors should use correct lang').toContain('котики')
 	}
 	f(cjs);
 	f(es);
