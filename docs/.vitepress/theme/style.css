@@ -50,6 +50,11 @@
 	--docs-primary-3: #2e7cf0;
 	--docs-primary-soft: #3c87f8;
 	--docs-secondary: #00dc82;
+	--docs-success: var(--docs-secondary);
+	--docs-success-1: var(--docs-secondary);
+	--docs-success-2: #54e3a8;
+	--docs-success-3: #71e9b7;
+	--docs-success-soft: #aff3d7;
 }
 
 :root {
@@ -63,7 +68,7 @@
     --vp-c-brand-3: var(--docs-primary-3);
     --vp-c-brand-soft: var(--docs-primary-soft);
 
-    --vp-c-tip-1: var(--vp-c-brand-1);
+    --vp-c-tip-1: #fff;
     --vp-c-tip-2: var(--vp-c-brand-2);
     --vp-c-tip-3: var(--vp-c-brand-3);
     --vp-c-tip-soft: var(--vp-c-brand-soft);
@@ -136,8 +141,12 @@
 :root {
     --vp-custom-block-tip-border: transparent;
     --vp-custom-block-tip-text: var(--vp-c-text-1);
-    --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
-    --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+    --vp-custom-block-tip-bg: var(--docs-success-soft);
+    --vp-custom-block-tip-code-bg: var(--docs-success-1);
+}
+
+.custom-block code {
+	font-weight: bold;
 }
 
 /**

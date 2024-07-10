@@ -11,7 +11,7 @@ console.log('stats', stats);
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-	title: "@repharm/validate",
+	title: "@hiperf/validate",
 	description: "Simple. Ultra lightweight. Data validation solution.",
 	themeConfig: {
 		// https://vitepress.dev/reference/default-theme-config
@@ -26,6 +26,23 @@ export default defineConfig({
 				text: 'Introduction',
 				items: [
 					{ text: 'Getting started', link: '/getting-started' },
+					{ text: 'Custom validation methods', link: '/custom-validation-methods' },
+					{ text: 'Slim validate', link: '/slim' },
+					{ text: 'Create validate', link: '/create' },
+				]
+			},
+			{
+				text: 'Validators',
+				items: [
+					{ text: 'isObject', link: '/getting-started' },
+					{ text: 'isArray', link: '/custom-validators' },
+					{ text: 'isNumber', link: '/slim' },
+					{ text: 'isString', link: '/create' },
+					{ text: 'isType', link: '/create' },
+					{ text: 'isOneOfType', link: '/create' },
+					{ text: 'isFunction', link: '/create' },
+					{ text: 'isSymbol', link: '/create' },
+					{ text: 'isMatch', link: '/create' }, // regex
 				]
 			},
 			{

@@ -2,24 +2,24 @@
 
 ## Installation
 
-Install ``@repharm/validate`` with your favorite package manager:
+Install ``@hiperf/validate`` with your favorite package manager:
 
 ::: code-group
 
 ```sh [npm]
-npm i @repharm/validate
+npm i @hiperf/validate
 ```
 
 ```sh [yarn]
-yarn add @repharm/validate
+yarn add @hiperf/validate
 ```
 
 ```sh [pnpm]
-pnpm i @repharm/validate
+pnpm i @hiperf/validate
 ```
 
 ```sh [bun]
-bun add @repharm/validate
+bun add @hiperf/validate
 ```
 
 :::
@@ -27,8 +27,10 @@ bun add @repharm/validate
 
 ## Usage
 
+✔️ both ``ESM`` and ``CJS`` modules is supported. 
+
 ```js
-import { validate } from '@repharm/validate';
+import { validate } from '@hiperf/validate';
 
 const schema = {
     name: {
@@ -38,8 +40,7 @@ const schema = {
             const isValid = /^[a-zA-Z-\., ]+$/.test(v);
             const errors = [];
 
-            if (!isValid)
-                errors.push('Name can only consist of latin alphabet, ".", ",", "-", or "space" characters');
+            if (!isValid) errors.push('Name can only consist of latin alphabet, ".", ",", "-", or "space" characters');
 
             return { isValid, errors };
         }

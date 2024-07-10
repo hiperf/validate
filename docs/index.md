@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "@repharm/validate"
+  name: "@hiperf/validate"
   text: "~ 1kb"
   tagline: Simple. Ultra lightweight. Data validation solution.
   actions:
@@ -17,8 +17,8 @@ hero:
 features:
   - title: Ultra lightweight
     details: _baseSize_ default and _slimSize_ slim version size (gzip).
-  - title: Custom validation
-    details: Support custom validation methods.
+  - title: Modular
+    details: Import only needed validators, add custom validators.
   - title: Multilanguage
     details: Include x languages and can be extended with more.
 ---
