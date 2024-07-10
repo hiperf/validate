@@ -2,11 +2,6 @@
 // Base validator
 
 /**
- * Reserved words in validator schema config
- */
-const reservedWords = ['required'];
-
-/**
  * Get validator by id
  * @param {string} name 
  * @param {Object} userData 
@@ -88,8 +83,8 @@ export default function(schema, data, lang = 'en', options = {}) {
 
 		// Iterate schema item keys
 		for (let validatorName in schemaItem) {
-			// Skip loop if validatorName is a reserved word
-			if (reservedWords.includes(validatorName)) continue;
+			// Skip loop if validatorName is a reserved word ['required']
+			if (validatorName == 'required') continue;
 
 			const validator = getValidator(validatorName, options.validators, libValidators);
 
@@ -115,32 +110,36 @@ export default function(schema, data, lang = 'en', options = {}) {
 				
 				// Iterate custom validator(s)
 				for (let validator of customVaidators) {
-					const result = validator(dataValue);
+					const resultErrors = validator(dataValue);
 
-					for (let error of result.errors) {
-						errors.push(error);
+					// Check that custom validator return correct data
+					// * errors type is not checked
+					if (!Array.isArray(resultErrors)) {
+						throw new Error(`Custom validator (field: ${fieldName}): Custom validator should return array of errors. Got - ${typeof resultErrors}`);
+					}
+
+					// Push errors from custom validator
+					for (let error of resultErrors) {
+						// Skip empty strings
+						if (error !== '') errors.push(error);
 					}
 				}
 
 			} else {
-				const success = validator(
-					dataValue,
-					validatorConfigValue,
-					validatorConfig
-				);
-
-				if (!success) {
-					const error = getError({
-						validatorConfigValue,
-						validatorConfig,
-						validatorName,
-						fieldName,
-						dataValue,
-						lang,
-						userLocales: options.locales,
-						libLocales
-					});
-					errors.push(error);
+				// If validator return false then push errors
+				if (!validator(dataValue, validatorConfigValue, validatorConfig)) {
+					errors.push(
+						getError({
+							validatorConfigValue,
+							validatorConfig,
+							validatorName,
+							fieldName,
+							dataValue,
+							lang,
+							userLocales: options.locales,
+							libLocales
+						})
+					);
 				}
 			}
 
