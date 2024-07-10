@@ -4,7 +4,6 @@ import isNumber from './isNumber';
 import isString from './isString';
 import isEmail from './isEmail';
 import isBoolean from './isBoolean';
-import isDate from './isDate';
 import isObject from './isObject';
 import isArray from './isArray';
 
@@ -15,7 +14,6 @@ const validators = {
 	isString,
 	isEmail,
 	isBoolean,
-	isDate,
 	isObject,
 	isArray,
 };
