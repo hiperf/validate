@@ -72,7 +72,7 @@ function positive(validate) {
 		age: 33,
 	};
 
-	return validate(schema, data, {locales, validators});
+	return validate(schema, data, { locales, validators });
 }
 
 function negative(validate) {
@@ -129,7 +129,7 @@ function negative(validate) {
 		age: '33',
 	};
 
-	return validate(schema, data, {locales, validators});
+	return validate(schema, data, { locales, validators });
 }
 
 test('Validate test', () => {
@@ -167,8 +167,8 @@ test('Slim validate', () => {
 		assert.isEmpty(errors, 'errors is empty');
 	}
 
-	const slimValidate_cjs = (schema, data, lang) => slim_cjs(schema, data, {locales, validators});
-	const slimValidate_es = (schema, data, lang) => slim_es(schema, data, {locales, validators});
+	const slimValidate_cjs = (schema, data) => slim_cjs(schema, data, {locales, validators});
+	const slimValidate_es = (schema, data) => slim_es(schema, data, {locales, validators});
 	
 	f(slimValidate_cjs);
 	f(slimValidate_es);
@@ -176,17 +176,37 @@ test('Slim validate', () => {
 
 test('Create validate', () => {
 	function f(validate) {
-		const { isValid, errors } = positive(validate);
+		const schema = {
+			message: {
+				isCatMessage: true,
+			}
+		};
+		
+		const data = {
+			message: '🐶 woof!'
+		};
+		
+		const { isValid, errors } = validate(schema, data, { validators, locales });
 
-		expect(isValid, 'isValid type should be boolean').toBeTypeOf('boolean');
-		expect(isValid, `isValid should be true. ${errors.toString()}`).toBe(true);
-
-		assert.isEmpty(errors, 'errors is empty');
+		expect(isValid).toBe(false);
+		expect(errors.length, 'errors is not empty').toBe(1);
+		expect(errors[0], 'errors should use correct lang').toContain('котики')
 	}
 
-	const validate_cjs = create_cjs({locales, validators});
-	const validate_es = create_es({locales, validators});
+	// Create validate
+	const computedValidators = Object.assign({
+		isCatMessage: v => /🐈|😺|😸|😻|😽/.test(v)
+	}, validators);
 
+	const computedLocales = Object.assign({
+		en: { 'isCatMessage': 'Message should contain cat emoji! 😾' },
+		ru: { 'isCatMessage': 'В сообщение должны содержаться котики! 😾' },
+	}, validators);
+
+	const validate_cjs = create_cjs({locales: computedLocales, validators: computedValidators, defaultLang: 'ru'});
+	const validate_es = create_es({locales: computedLocales, validators: computedValidators, defaultLang: 'ru'});
+
+	// Run
 	f(validate_cjs);
 	f(validate_es);
 });
@@ -198,7 +218,7 @@ test('Custom', () => {
 		};
 
 		const locales = {
-			en: { 'error-isCatMessage': 'Message should contain cat emoji! 😾' }
+			en: { 'isCatMessage': 'Message should contain cat emoji! 😾' }
 		};
 
 		const schema = {
@@ -228,8 +248,8 @@ test('Locales test', () => {
 		};
 
 		const locales = {
-			en: { 'error-isCatMessage': 'Message should contain cat emoji! 😾' },
-			ru: { 'error-isCatMessage': 'В сообщение должны содержаться котики! 😾' },
+			en: { 'isCatMessage': 'Message should contain cat emoji! 😾' },
+			ru: { 'isCatMessage': 'В сообщение должны содержаться котики! 😾' },
 		};
 
 		const schema = {

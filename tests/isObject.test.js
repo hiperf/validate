@@ -1,6 +1,7 @@
 import { expect, test } from 'vitest';
 import * as cjs from './dist/cjs/index.js';
 import * as es from './dist/es/index.js';
+
 test('isObject validator test', () => {
 	function f({ isObject }) {
 		// Positive
