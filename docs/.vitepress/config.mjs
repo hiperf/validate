@@ -11,17 +11,18 @@ const menuValidators = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'menu-
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-	title: "@hiperf/validate",
-	description: "Simple. Ultra lightweight. Data validation solution.",
+	title: '@hiperf/validate',
+	description: 'Simple. Ultra lightweight. Data validation solution.',
+	base: '/validate/',
+
+	// https://vitepress.dev/reference/default-theme-config
 	themeConfig: {
 		siteTitle: '@hiperf/validate',
-		// https://vitepress.dev/reference/default-theme-config
 		nav: [
 			{ text: 'Guide', link: '/getting-started' },
 			{ text: 'Examples', link: '/examples/basic' },
 			{ text: version, link: 'https://github.com/hiperf/validate/blob/main/CHANGELOG.md' },
 		],
-
 		sidebar: [
 			{
 				text: 'Introduction',
@@ -45,7 +46,6 @@ export default defineConfig({
 				]
 			}
 		],
-
 		socialLinks: [
 			{ icon: 'github', link: 'https://github.com/hiperf/validate' }
 		]
