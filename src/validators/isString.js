@@ -3,6 +3,8 @@
  * @param {string} dataValue - input value
  * @returns {boolean} 
  * @example
+ * import isString from '@hiperf/validate/isString';
+ * 
  * isString(5); // false
  * isString('John'); // true
  */

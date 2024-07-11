@@ -3,6 +3,8 @@
  * @param {object} dataValue - input value
  * @returns {boolean} 
  * @example
+ * import isObject from '@hiperf/validate/isObject';
+ * 
  * isObject({name: 'John'}); // true
  * isObject('John'); // false
  */

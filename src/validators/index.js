@@ -6,6 +6,7 @@ import isEmail from './isEmail';
 import isBoolean from './isBoolean';
 import isObject from './isObject';
 import isArray from './isArray';
+import isOneOf from './isOneOf';
 
 const validators = {
 	min,
@@ -16,6 +17,7 @@ const validators = {
 	isBoolean,
 	isObject,
 	isArray,
+	isOneOf
 };
 
 export default validators;

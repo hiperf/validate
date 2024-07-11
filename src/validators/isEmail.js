@@ -3,6 +3,8 @@
  * @param {string} dataValue - input value
  * @returns {boolean} 
  * @example
+ * import isEmail from '@hiperf/validate/isEmail';
+ * 
  * isEmail('John'); // false
  * isEmail('John@example.com'); // true
  */
