@@ -26,15 +26,15 @@ module.exports = (cliArg) => {
 
 	function genConfig(fileName) {
 		return {
-			input: `src/${fileName}`,
+			input: `src/${fileName}.js`,
 			output: [
 				{
-					file: `dist/es/${fileName}`,
+					file: `dist/es/${fileName}.mjs`,
 					format: 'es',
 					strict: false,
 				},
 				{
-					file: `dist/cjs/${fileName}`,
+					file: `dist/cjs/${fileName}.js`,
 					format: 'cjs',
 					strict: false,
 				},
@@ -43,11 +43,12 @@ module.exports = (cliArg) => {
 		}
 	}
 	
-	rollupConfig.push(genConfig('index.js'));
-	rollupConfig.push(genConfig('slim.js'));
-	rollupConfig.push(genConfig('create.js'));
+	rollupConfig.push(genConfig('index'));
+	rollupConfig.push(genConfig('slim'));
+	rollupConfig.push(genConfig('create'));
 
-	for (let fileName of validators) {
+	for (let filePath of validators) {
+		const fileName = filePath.replace('.js', '');
 		rollupConfig.push(genConfig(`validators/${fileName}`));
 	}
 	
