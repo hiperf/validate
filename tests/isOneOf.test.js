@@ -3,8 +3,6 @@ import * as cjs from './dist/cjs/index.js';
 import * as es from './dist/es/index.js';
 
 test('isOneOf validator test', () => {
-	console.log('build', Object.keys(es));
-	
 	function f({ isOneOf }) {
 		// Positive
 		expect(isOneOf('Dog', ['Cat','Dog'])).toBe(true);
