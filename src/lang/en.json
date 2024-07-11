@@ -1,11 +1,18 @@
 {
-    "min": "Min value should be \"%e\", current value is \"%v\"",
-    "isNumber": "Value \"%v\" should be number",
-    "isString": "Value \"%v\" should be string",
-    "isEmail": "\"%v\" is not a valid email",
-    "isDate": "\"%v\" is not a valid date",
-    "minLength": "Min length should be \"%e\"",
-    "isBoolean": "Value \"%v\" should be boolean",
-    "validator-config-is-missing-value": "Validator \"%v\" config is an object, \"value\" key is required",
-    "unknown-validator": "Unknown validator \"%v\", make sure you incuded this validator"
+    "equal": "\"%v\" should be equal to \"%e\"",
+    "isArray": "\"%v\" is not array",
+	"isBoolean": "\"%v\" is not a boolean",
+	"isEmail": "\"%v\" is not email",
+	"isNumber": "\"%v\" should be number",
+	"isObject": "\"%v\" should be object",
+	"isOneOf": "\"%v\" should be one of enums",
+	"isString": "\"%v\" should be string",
+	"match": "\"%v\" do not match pattern",
+	"max": "Max value is \"%e\", current is \"%v\"",
+	"maxLength": "Max length is \"%e\"",
+    "min": "Min value is \"%e\", current is \"%v\"",
+	"minLength": "Min length is \"%e\"",
+    "validator-config-value": "Validator \"%v\" config is an object, \"value\" key is required",
+    "unknown-validator": "Unknown validator \"%v\"",
+    "required": "Field is required"
 }
