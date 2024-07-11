@@ -22,7 +22,7 @@ function getValidator(name, userData = {}, libData = {}) {
 
 /**
  * @typedef {Object} ValidateOptions
- * @property {string} defaultLang
+ * @property {string} lang
  * @property {Object.<string, LocaleObject>} locales
  * @property {Object.<string, Function>} validators
  */
@@ -31,7 +31,6 @@ function getValidator(name, userData = {}, libData = {}) {
  * Shema validator
  * @param {Object} schema - validation schema
  * @param {Object} data - income values
- * @param {string} [lang=en] - errors language
  * @param {ValidateOptions} options - validate options
  * @returns {ValidateResult}
  * @example
@@ -58,12 +57,13 @@ function getValidator(name, userData = {}, libData = {}) {
  * };
  * const { isValid, errors } = validator(schema, data);
  */
-export default function(schema, data, lang = 'en', options = {}) {
+export default function(schema, data, options = {}) {
 	let errors = [];
 
 	// Handle options
-	if (!('locales' in options)) options.locales = {};
-	if (!('validators' in options)) options.validators = {};
+	const lang = options?.lang || defaultLang;
+	const userLocales = options?.locales || {};
+	const userValidators = options?.validators || {};
 
 	// Iterate schema items
 	for (let fieldName in schema) {
@@ -74,7 +74,7 @@ export default function(schema, data, lang = 'en', options = {}) {
 		// Id schema key does not exist in data
 		if (!data.hasOwnProperty(fieldName)) {
 			// If data key is required
-			if (isRequired) errors.push(d('field-required', { fieldName }, lang, options.locales, libLocales));
+			if (isRequired) errors.push(d('field-required', { fieldName }, lang, userLocales, libLocales));
 			continue;
 		}
 
@@ -86,19 +86,19 @@ export default function(schema, data, lang = 'en', options = {}) {
 			// Skip loop if validatorName is a reserved word ['required']
 			if (validatorName == 'required') continue;
 
-			const validator = getValidator(validatorName, options.validators, libValidators);
+			const validator = getValidator(validatorName, userValidators, libValidators);
 
 			// Check if validator exist
 			if (!validator && validatorName != 'custom') {
-				throw new Error(d('error-unknown-validator', { v: validatorName }, lang, options.locales, libLocales));
+				throw new Error(d('unknown-validator', { v: validatorName }, lang, userLocales, libLocales));
 			}
 			const validatorConfig = schemaItem[validatorName];
 			let validatorConfigValue = validatorConfig;
 
 			// Check if validatorConfig is an object
-			if (getValidator('isObject', options.validators, libValidators)(validatorConfig)) {
+			if (isObject(validatorConfig)) {
 				if (!('value' in validatorConfig))
-					throw new Error(d('error-validator-config-is-missing-value', { v: validatorName }, lang, options.locales, libLocales));
+					throw new Error(d('validator-config-is-missing-value', { v: validatorName }, lang, userLocales, libLocales));
 
 				validatorConfigValue = validatorConfig.value;
 			}
@@ -136,7 +136,7 @@ export default function(schema, data, lang = 'en', options = {}) {
 							fieldName,
 							dataValue,
 							lang,
-							userLocales: options.locales,
+							userLocales,
 							libLocales
 						})
 					);
