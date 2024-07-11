@@ -48,7 +48,7 @@
 	--docs-primary-1: var(--docs-primary);
 	--docs-primary-2: #2b76e8;
 	--docs-primary-3: #2e7cf0;
-	--docs-primary-soft: #3c87f8;
+	--docs-primary-soft: #9dc3fc6f;
 	--docs-secondary: #00dc82;
 	--docs-success: var(--docs-secondary);
 	--docs-success-1: var(--docs-secondary);
@@ -141,9 +141,10 @@
 :root {
     --vp-custom-block-tip-border: transparent;
     --vp-custom-block-tip-text: var(--vp-c-text-1);
-    --vp-custom-block-tip-bg: var(--docs-success-soft);
-    --vp-custom-block-tip-code-bg: var(--docs-success-1);
+    --vp-custom-block-tip-bg: var(--vp-c-tip-soft);
+    --vp-custom-block-tip-code-bg: var(--vp-c-tip-2);
 }
+
 
 .custom-block code {
 	font-weight: bold;
