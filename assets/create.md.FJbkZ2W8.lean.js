@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a3 as n}from"./chunks/framework.C2ta5k1a.js";const c=JSON.parse('{"title":"Create own validate","description":"","frontmatter":{},"headers":[],"relativePath":"create.md","filePath":"create.md"}'),t={name:"create.md"},h=n("",9),l=[h];function e(p,k,r,d,E,g){return a(),i("div",null,l)}const y=s(t,[["render",e]]);export{c as __pageData,y as default};
