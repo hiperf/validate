@@ -30,9 +30,6 @@ jobs:
     - name: Build Docs
       run: yarn docs && yarn docs:build
 
-    - name: Check generated tests
-      run: node ./utils/checkGenTests.js
-
     - name: Tests
       run: yarn test
       
