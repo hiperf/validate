@@ -1,3 +1,3 @@
 # @hiperf/validate
 
-[docs](hiperf.github.com/validate)
+[docs](https://hiperf.github.io/validate/)
