@@ -12,7 +12,7 @@ hero:
       link: /getting-started
     - theme: alt
       text: Examples
-      link: /examples
+      link: /examples/basic
 
 features:
   - title: Ultra lightweight
@@ -20,5 +20,5 @@ features:
   - title: Modular
     details: Import only needed validators, add custom validators.
   - title: Multilanguage
-    details: Include x languages and can be extended with more.
+    details: Multilanguage support, you can define your own translations.
 ---

@@ -1,71 +1,29 @@
 # Custom validation methods
 
-You can add custom validation method by using ``custom`` name inside validation schema or pass custom validator inside ``options.validators`` object.
+You can add custom validation method inline by using ``custom`` name inside validation schema or pass custom validator inside ``options.validators`` object.
 
-
-## custom
-
+## Inline
 ``custom`` could be function or array of fuctions if you need multiple custom validators.
-```js
-const schema = {
-	message: {
-		custom(v) {
-			const isValid = /🐈|😺|😸|😻|😽/.test(v);
-			const error = [];
 
-			if (!isValid) errors.push('Message should contain cat emoji! 😾');
+<<< @/.vitepress/snippets/generated/custom-validation-methods-inline.js
 
-			return { isValid, error };
-		}
-	}
-};
-
-const data = {
-	message: '🐶 woof!'
-};
-
-const { isValid, errors } = validate(schema, data);
-// isValid = false
-// errors = ['Message should contain cat emoji! 😾']
-```
-
-## custom (multiple)
-
+## Inline (multiple)
 Multiple custom validators example.
-```js
-const schema = {
-	message: {
-		custom: [
-			(v) => [
-				!/🐈|😺|😸|😻|😽/.test(v) ? 
-				'Message should contain cat emoji! 😾': ''
-			],
-			(v) => [
-				!/🐛|🐝|🐞|🐜|🦗/.test(v) ? 
-				'Message should contain at less one bug! 🐸': ''
-			],
-		]
-	}
-};
 
-const data = {
-	message: '🐶 woof!'
-};
-
-const { isValid, errors } = validate(schema, data);
-// isValid = false
-// errors = [
-//     'Message should contain cat emoji! 😾',
-//     'Message should contain at less one bug! 🐸'
-// ]
-```
+<<< @/.vitepress/snippets/generated/custom-validation-methods-inline-multiple.js
 
 ::: tip
-If you return ``empty string``, ``null``, ``false`` or ``0`` inside errors array, that value will not count as error.
+If you return ``empty string``, ``null``, ``false`` or ``0`` inside errors array, and that value will not count as error.
 :::
 
 
-## options.validators 
+## Custom validators
 
-You can also pass custom validatio method to ``options.validators``.
+You can also pass custom validator method to ``options.validators``.
+
+<<< @/.vitepress/snippets/generated/custom-validation-custom-validators.js
+
+::: info
+Default lang is ``en``, and it's used if you do not specify one inside options object.
+:::
 
