@@ -1,6 +1,6 @@
 {
     "name": "@hiperf/validate",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Data validator, validate object properties",
     "license": "MIT",
     "repository": {

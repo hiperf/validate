@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.6
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.5...v0.0.6)
+
+### 🩹 Fixes
+
+- Fixed file imports for es modules ([20f6e55](https://github.com/hiperf/validate/commit/20f6e55))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.5
 
 [compare changes](https://github.com/hiperf/validate/compare/v0.0.4...v0.0.5)
