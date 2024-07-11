@@ -29,7 +29,7 @@ const dirDocs = path.resolve(__dirname, '../docs/');
 	}
 
 	// Sort menu items by alphabet
-	menu.sort((a, b) => (a.text > b.text) - (a.text < b.text));
+	menu.sort((a, b) => a.text.localeCompare(b.text));
 
 	// Wait for all tasks
 	await Promise.all(promises);
