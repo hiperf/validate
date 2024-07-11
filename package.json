@@ -25,6 +25,9 @@
             "import": "./dist/es/validators/*"
         }
     },
+	"files": [
+		"dist"
+	],
     "devDependencies": {
         "@rollup/plugin-json": "^6.1.0",
         "@rollup/plugin-replace": "^5.0.7",
