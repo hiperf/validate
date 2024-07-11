@@ -19,8 +19,7 @@ jobs:
         node-version: '18'
 
     - name: Install dependencies
-      run: npm install --global yarn
-      run: yarn install 
+      run: npm install --global yarn && yarn install
 
     - name: Build
       run: yarn build:production
