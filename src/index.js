@@ -8,5 +8,6 @@ export { default as isEmail } from './validators/isEmail.js';
 export { default as isNumber } from './validators/isNumber.js';
 export { default as isObject } from './validators/isObject.js';
 export { default as isString } from './validators/isString.js';
+export { default as isOneOf } from './validators/isOneOf.js';
 export { default as min } from './validators/min.js';
 export { default as minLength } from './validators/minLength.js';
