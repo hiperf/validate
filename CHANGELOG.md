@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.5
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.4...v0.0.5)
+
+### 🩹 Fixes
+
+- Fixed js file extension in rollup config output ([6c39932](https://github.com/hiperf/validate/commit/6c39932))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.4
 
 [compare changes](https://github.com/hiperf/validate/compare/v0.0.3...v0.0.4)
