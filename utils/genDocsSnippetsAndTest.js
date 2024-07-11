@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const os = require('node:os');
 
 const dirSource = path.resolve(__dirname, '../docs-snippets');
 const dirDocsOutput = path.resolve(__dirname, '../docs/.vitepress/snippets/generated');
@@ -12,7 +13,7 @@ const files = fs.readdirSync(dirSource);
  * @returns {{forDocs: string, forTest: string}}
  */
 function processFile(str) {
-	const ar = str.split('\n');
+	const ar = str.split(/[\r\n]+/);
 	let forDocs = '';
 	let forTest = '';
 
@@ -22,14 +23,14 @@ function processFile(str) {
 
 		// If it's for docs
 		if (line.indexOf('//D') === 0) {
-			forDocs += line.slice(4, line.length-1) + '\n';
+			forDocs += line.slice(4, line.length-1) + os.EOL;
 		// If it's for test
 		} else if (line.indexOf('//T') === 0) {
-			forTest += line.slice(4, line.length-1) + '\n';
+			forTest += line.slice(4, line.length-1) + os.EOL;
 		// If it's for both
 		} else {
-			forDocs += line + '\n';
-			forTest += line + '\n';
+			forDocs += line + os.EOL;
+			forTest += line + os.EOL;
 		}
 	}
 
