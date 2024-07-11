@@ -5,20 +5,21 @@ import { defineConfig } from 'vitepress';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const stats = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'stats.json')));
+const { version } = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../package.json')));
 
-console.log('stats', stats);
-
+const menuValidators = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'menu-validators.json')));
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
 	title: "@hiperf/validate",
 	description: "Simple. Ultra lightweight. Data validation solution.",
 	themeConfig: {
+		siteTitle: '@hiperf/validate',
 		// https://vitepress.dev/reference/default-theme-config
 		nav: [
-			{ text: 'Home', link: '/' },
-			{ text: 'Getting started', link: '/getting-started' },
-			{ text: 'Examples', link: '/examples' },
+			{ text: 'Guide', link: '/getting-started' },
+			{ text: 'Examples', link: '/examples/basic' },
+			{ text: version, link: 'https://github.com/hiperf/validate/blob/main/CHANGELOG.md' },
 		],
 
 		sidebar: [
@@ -27,34 +28,26 @@ export default defineConfig({
 				items: [
 					{ text: 'Getting started', link: '/getting-started' },
 					{ text: 'Custom validation methods', link: '/custom-validation-methods' },
-					{ text: 'Slim validate', link: '/slim' },
-					{ text: 'Create validate', link: '/create' },
+					{ text: 'Slim version', link: '/slim' },
+					{ text: 'Create own validate', link: '/create' },
+					{ text: 'Internationalization', link: '/Internationalization' },
+					{ text: 'Typescript', link: '/typescript' },
 				]
 			},
 			{
 				text: 'Validators',
-				items: [
-					{ text: 'isObject', link: '/getting-started' },
-					{ text: 'isArray', link: '/custom-validators' },
-					{ text: 'isNumber', link: '/slim' },
-					{ text: 'isString', link: '/create' },
-					{ text: 'isType', link: '/create' },
-					{ text: 'isOneOfType', link: '/create' },
-					{ text: 'isFunction', link: '/create' },
-					{ text: 'isSymbol', link: '/create' },
-					{ text: 'isMatch', link: '/create' }, // regex
-				]
+				items: menuValidators
 			},
 			{
 				text: 'Examples',
 				items: [
-					{ text: 'Basic-example', link: '/examples' },
+					{ text: 'Basic', link: '/examples/basic' },
 				]
 			}
 		],
 
 		socialLinks: [
-			{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+			{ icon: 'github', link: 'https://github.com/hiperf/validate' }
 		]
 	},
 
