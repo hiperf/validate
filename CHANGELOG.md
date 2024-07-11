@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.2...v0.0.3)
+
+### 🩹 Fixes
+
+- Added files field to package.json ([5445cfe](https://github.com/hiperf/validate/commit/5445cfe))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.2
 
 

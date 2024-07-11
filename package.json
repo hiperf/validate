@@ -1,6 +1,6 @@
 {
     "name": "@hiperf/validate",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Data validator, validate object properties",
     "license": "MIT",
     "repository": {
@@ -25,9 +25,9 @@
             "import": "./dist/es/validators/*"
         }
     },
-	"files": [
-		"dist"
-	],
+    "files": [
+        "dist"
+    ],
     "devDependencies": {
         "@rollup/plugin-json": "^6.1.0",
         "@rollup/plugin-replace": "^5.0.7",
