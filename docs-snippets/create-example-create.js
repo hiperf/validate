@@ -1,5 +1,5 @@
-//T import create from '../../dist/es/create.js';
-//T import isNumber from '../../dist/es/validators/isNumber.js';
+//T import create from '../../dist/es/create';
+//T import isNumber from '../../dist/es/validators/isNumber';
 //T import { expect, assert, test } from 'vitest';
 //T
 //T test('create-example-create', () => {

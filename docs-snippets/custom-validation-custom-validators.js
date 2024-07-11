@@ -1,4 +1,4 @@
-//T import { validate } from '../../dist/es/index.js';
+//T import { validate } from '../../dist/es/index';
 //T import { expect, assert, test } from 'vitest';
 //T
 //T test('custom-validation-custom-validators', () => {

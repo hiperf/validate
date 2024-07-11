@@ -2,20 +2,20 @@
 import { expect, assert, test } from 'vitest';
 
 // Default
-import { validate as cjs } from './dist/cjs/index.js';
-import { validate as es } from './dist/es/index.js';
+import { validate as cjs } from './dist/cjs/index';
+import { validate as es } from './dist/es/index';
 
 // Slim
-import slim_cjs from './dist/cjs/slim.js';
-import slim_es from './dist/es/slim.js';
+import slim_cjs from './dist/cjs/slim';
+import slim_es from './dist/es/slim';
 
 // Create
-import create_cjs from './dist/cjs/create.js';
-import create_es from './dist/es/create.js';
+import create_cjs from './dist/cjs/create';
+import create_es from './dist/es/create';
 
 // Misc
-import { validators } from './dist/es/index.js';
-import { locales } from './dist/es/index.js';
+import { validators } from './dist/es/index';
+import { locales } from './dist/es/index';
 
 function positive(validate) {
 	const schema = {

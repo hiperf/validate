@@ -10,19 +10,19 @@
     "exports": {
         ".": {
             "require": "./dist/cjs/index.js",
-            "import": "./dist/es/index.js"
+            "import": "./dist/es/index.mjs"
         },
         "./slim": {
             "require": "./dist/cjs/slim.js",
-            "import": "./dist/es/slim.js"
+            "import": "./dist/es/slim.mjs"
         },
         "./create": {
             "require": "./dist/cjs/create.js",
-            "import": "./dist/es/create.js"
+            "import": "./dist/es/create.mjs"
         },
         "./*": {
-            "require": "./dist/cjs/validators/*",
-            "import": "./dist/es/validators/*"
+            "require": "./dist/cjs/validators/*.js",
+            "import": "./dist/es/validators/*.mjs"
         }
     },
     "files": [

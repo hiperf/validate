@@ -5,7 +5,9 @@ const replace = require('@rollup/plugin-replace');
 const bundleSize = require('rollup-plugin-bundle-size');
 const terser = require('@rollup/plugin-terser');
 
-module.exports = (cliArg) => {
+const dirDist = path.resolve(__dirname, 'dist');
+
+module.exports = async (cliArg) => {
 	const rollupConfig = [];
 	const minify = 'config-minify' in cliArg && cliArg['config-minify'];
 	const sValidateBase = fs.readFileSync(path.resolve(__dirname, './src/rollup-import/validate-base.js'), {encoding: 'utf-8'});
@@ -51,6 +53,9 @@ module.exports = (cliArg) => {
 		const fileName = filePath.replace('.js', '');
 		rollupConfig.push(genConfig(`validators/${fileName}`));
 	}
+
+	// Clear dist folder before run
+	if (fs.existsSync(dirDist)) await fs.promises.rm(dirDist, { recursive: true });
 	
 	return rollupConfig;
 }

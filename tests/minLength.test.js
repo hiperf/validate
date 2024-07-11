@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
-import * as cjs from './dist/cjs/index.js';
-import * as es from './dist/es/index.js';
+import * as cjs from './dist/cjs/index';
+import * as es from './dist/es/index';
 
 test('minLength validator test', () => {
 	function f({ minLength }) {

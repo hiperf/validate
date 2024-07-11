@@ -1,5 +1,5 @@
-//T import validate from '../../dist/es/slim.js';
-//T import isNumber from '../../dist/es/validators/isNumber.js';
+//T import validate from '../../dist/es/slim';
+//T import isNumber from '../../dist/es/validators/isNumber';
 //T import { expect, assert, test } from 'vitest';
 //T
 //T test('slim-example', () => {
