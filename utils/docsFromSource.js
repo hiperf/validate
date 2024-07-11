@@ -9,7 +9,7 @@ const dirDocs = path.resolve(__dirname, '../docs/');
 
 
 // Generate docs for validators
-(async() => {
+(async () => {
 	const validators = fs.readdirSync(dirValidators).filter(v => v !== 'index.js');
 	const promises = [];
 	const menu = [];
@@ -20,7 +20,7 @@ const dirDocs = path.resolve(__dirname, '../docs/');
 			const name = fileName.replace('.js', '');
 
 			menu.push({ text: name, link: `/validators/${name}` }),
-			markdown = `# ${name}\n${markdown}`
+				markdown = `# ${name}\n${markdown}`
 
 			await fs.promises.writeFile(path.resolve(dirDocs, `validators/${name}.md`), markdown);
 
@@ -29,14 +29,21 @@ const dirDocs = path.resolve(__dirname, '../docs/');
 	}
 
 	// Sort menu items by alphabet
-	menu.sort((a, b) => a.text.localeCompare(b.text));
+	menu.sort(function (a, b) {
+		if (a.text < b.text)
+			return -1;
+		else if (a.text > b.text)
+			return 1;
+
+		return 0;
+	});
 
 	// Wait for all tasks
 	await Promise.all(promises);
 
 	// Save
 	await fs.promises.writeFile(
-		path.resolve(dirDocs, `.vitepress/menu-validators.json`), 
+		path.resolve(dirDocs, `.vitepress/menu-validators.json`),
 		JSON.stringify(menu)
 	);
 })();
