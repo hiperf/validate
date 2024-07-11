@@ -1,15 +1,15 @@
 {
     "license": "MIT",
-	"name": "@hiperf/validate",
-    "version": "0.0.6",
+    "name": "@hiperf/validate",
+    "version": "0.0.7",
     "description": "Data validator, validate object properties",
-	"keywords": [
-		"validation",
-		"validate",
-		"data",
-		"object",
-		"forms"
-	],
+    "keywords": [
+        "validation",
+        "validate",
+        "data",
+        "object",
+        "forms"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/hiperf/validate.git"

@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.6...v0.0.7)
+
+### 🚀 Enhancements
+
+- **package.json:** Added keywords, refactor ([d0eb70c](https://github.com/hiperf/validate/commit/d0eb70c))
+
+### 🩹 Fixes
+
+- Fixed menu-validators sort order ([f16fc1c](https://github.com/hiperf/validate/commit/f16fc1c))
+
+### 📖 Documentation
+
+- Readme update ([b82adab](https://github.com/hiperf/validate/commit/b82adab))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.6
 
 [compare changes](https://github.com/hiperf/validate/compare/v0.0.5...v0.0.6)
