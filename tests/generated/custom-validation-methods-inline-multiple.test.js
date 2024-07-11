@@ -37,4 +37,3 @@ expect(errors.length).toBe(2);
 expect(errors[0]).toBe('Message should contain cat emoji! 😾');
 expect(errors[1]).toBe('Message should contain at less one bug! 🐸');
 });
-

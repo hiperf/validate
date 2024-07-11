@@ -52,4 +52,3 @@ expect(errors.length).toBe(2);
 expect(errors[0]).toBe('Minimal age is 18 y.o.');
 expect(errors[1]).toBe('Message should contain cat emoji! 😾');
 });
-

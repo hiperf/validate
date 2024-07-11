@@ -26,4 +26,3 @@ const { isValid, errors } = validate(schema, data);
 //     'Message should contain at less one bug! 🐸'
 // ]
 
-

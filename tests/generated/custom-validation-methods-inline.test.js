@@ -30,4 +30,3 @@ expect(isValid).toBe(false);
 expect(errors.length).toBe(1);
 expect(errors[0]).toBe('Message should contain cat emoji! 😾');
 });
-

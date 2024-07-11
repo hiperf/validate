@@ -20,4 +20,3 @@ const { isValid, errors } = validate(schema, data, { validators, locales });
 // isValid = false 
 // errors = ['Value should be a number']
 
-

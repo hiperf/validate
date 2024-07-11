@@ -23,4 +23,3 @@ const { isValid, errors } = validate(schema, data, { lang: 'es', validators, loc
 // isValid = false
 // errors = ['El mensaje debe contener emoji de gato.! 😾']
 
-

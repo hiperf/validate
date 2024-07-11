@@ -27,4 +27,3 @@ expect(isValid).toBe(false);
 expect(errors.length).toBe(1);
 expect(errors[0].indexOf('no es un correo electrónico válido')).not.toBe(-1);
 });
-

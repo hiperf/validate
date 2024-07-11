@@ -16,4 +16,3 @@ const locales = {
 export default create({ validators, locales });
 
 
-

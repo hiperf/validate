@@ -30,4 +30,3 @@ expect(isValid).toBe(false);
 expect(errors.length).toBe(1);
 expect(errors[0].indexOf(locales.en.isNumber)).not.toBe(-1);
 });
-

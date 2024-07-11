@@ -20,4 +20,3 @@ const data = {
 const { isValid, errors } = validate(schema, data);
 // isValid = false
 // errors = ['Message should contain cat emoji! 😾']
-

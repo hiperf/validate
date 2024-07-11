@@ -30,4 +30,3 @@ assert.isArray(errors);
 expect(isValid).toBe(true);
 expect(errors.length).toBe(0);
 });
-

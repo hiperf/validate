@@ -17,4 +17,3 @@ const { isValid, errors } = validate(schema, data, { lang: 'es', locales });
 // isValid = false
 // errors = ["d@w.joe@example.com" no es un correo electrónico válido']
 
-
