@@ -74,7 +74,7 @@ export default function(schema, data, options = {}) {
 		// Id schema key does not exist in data
 		if (!data.hasOwnProperty(fieldName)) {
 			// If data key is required
-			if (isRequired) errors.push(d('field-required', { fieldName }, lang, userLocales, libLocales));
+			if (isRequired) errors.push(d('required', { fieldName }, lang, userLocales, libLocales));
 			continue;
 		}
 
@@ -98,7 +98,7 @@ export default function(schema, data, options = {}) {
 			// Check if validatorConfig is an object
 			if (isObject(validatorConfig)) {
 				if (!('value' in validatorConfig))
-					throw new Error(d('validator-config-is-missing-value', { v: validatorName }, lang, userLocales, libLocales));
+					throw new Error(d('validator-config-value', { v: validatorName }, lang, userLocales, libLocales));
 
 				validatorConfigValue = validatorConfig.value;
 			}
@@ -115,7 +115,7 @@ export default function(schema, data, options = {}) {
 					// Check that custom validator return correct data
 					// * errors type is not checked
 					if (!Array.isArray(resultErrors)) {
-						throw new Error(`Custom validator (field: ${fieldName}): Custom validator should return array of errors. Got - ${typeof resultErrors}`);
+						throw new Error(`${fieldName}: Custom validator should return array of errors`);
 					}
 
 					// Push errors from custom validator
@@ -146,5 +146,5 @@ export default function(schema, data, options = {}) {
 		}
 	}
 
-	return { isValid: errors.length === 0, errors };
+	return { isValid: errors.length == 0, errors };
 }

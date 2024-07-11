@@ -10,4 +10,8 @@ export { default as isObject } from './validators/isObject.js';
 export { default as isString } from './validators/isString.js';
 export { default as isOneOf } from './validators/isOneOf.js';
 export { default as min } from './validators/min.js';
+export { default as max } from './validators/max.js';
 export { default as minLength } from './validators/minLength.js';
+export { default as maxLength } from './validators/maxLength.js';
+export { default as match } from './validators/match.js';
+export { default as equal } from './validators/equal.js';

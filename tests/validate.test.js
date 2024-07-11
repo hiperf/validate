@@ -57,6 +57,7 @@ function positive(validate) {
 		},
 		age: {
 			min: 18,
+			max: 200,
 			isNumber: {
 				value: true,
 				error: 'Custom isNumber error message',
