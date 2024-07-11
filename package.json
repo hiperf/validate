@@ -1,9 +1,9 @@
 {
     "name": "@hiperf/validate",
     "version": "0.0.1",
-    "description": "Data validator",
+    "description": "Data validator, validate object properties",
     "license": "MIT",
-	"repository": {
+    "repository": {
         "type": "git",
         "url": "git+https://github.com/hiperf/validate.git"
     },
@@ -29,11 +29,12 @@
         "@rollup/plugin-json": "^6.1.0",
         "@rollup/plugin-replace": "^5.0.7",
         "@rollup/plugin-terser": "^0.4.4",
+        "@types/node": "^20.14.10",
         "changelogen": "^0.5.5",
         "jsdoc-to-markdown": "^8.0.1",
         "rollup-plugin-bundle-size": "^1.0.3",
         "vitepress": "^1.3.0",
-        "vitest": "^2.0.1",
+        "vitest": "^2.0.2",
         "vue": "^3.4.31"
     },
     "scripts": {
@@ -42,10 +43,10 @@
         "build": "rollup -c",
         "build:production": "rollup -c --config-minify && node ./utils/genDocsVariables.js",
         "build:watch": "rollup -c --watch",
-        "docs": "node ./utils/docs.js",
+        "docs": "node ./utils/docsFromSource.js && node ./utils/genDocsSnippetsAndTest.js",
         "docs:dev": "vitepress dev docs",
         "docs:build": "vitepress build docs",
         "docs:preview": "vitepress preview docs",
-		"release": "yarn build && yarn test && changelogen --release && npm publish && git push --follow-tags"
+        "release": "yarn docs && yarn docs:build && yarn build:production && yarn test && changelogen --release && npm publish && git push --follow-tags"
     }
 }
