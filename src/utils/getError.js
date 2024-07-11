@@ -26,5 +26,5 @@ export default function({ validatorConfigValue, validatorConfig, validatorName, 
 		if ('error' in validatorConfig) error = validatorConfig.error;
 	}
 
-	return error ? error : `${fieldName}: ` + d(`error-${validatorName}`, { e: validatorConfigValue, v: dataValue }, lang, userLocales, libLocales);
+	return error ? error : `${fieldName}: ` + d(validatorName, { e: validatorConfigValue, v: dataValue }, lang, userLocales, libLocales);
 }
