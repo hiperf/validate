@@ -4,7 +4,6 @@ const json = require('@rollup/plugin-json');
 const replace = require('@rollup/plugin-replace');
 const bundleSize = require('rollup-plugin-bundle-size');
 const terser = require('@rollup/plugin-terser');
-const { strict } = require('node:assert');
 
 module.exports = (cliArg) => {
 	const rollupConfig = [];
