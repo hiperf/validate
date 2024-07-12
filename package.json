@@ -1,8 +1,7 @@
 {
-    "license": "MIT",
     "name": "@hiperf/validate",
     "version": "0.0.8",
-    "description": "Data validator, validate object properties",
+    "description": "Simple. Ultra lightweight. Data validation solution.",
     "keywords": [
         "validation",
         "validate",
@@ -14,6 +13,7 @@
         "type": "git",
         "url": "git+https://github.com/hiperf/validate.git"
     },
+	"license": "MIT",
     "exports": {
         ".": {
             "require": "./dist/cjs/index.js",
