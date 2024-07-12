@@ -5,7 +5,7 @@
 	"isEmail": "\"%v\" is not email",
 	"isNumber": "\"%v\" should be number",
 	"isObject": "\"%v\" should be object",
-	"isOneOf": "\"%v\" should be one of enums",
+	"isOneOf": "Unknown value \"%v\"",
 	"isString": "\"%v\" should be string",
 	"match": "\"%v\" do not match pattern",
 	"max": "Max value is \"%e\", current is \"%v\"",
