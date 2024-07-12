@@ -1,6 +1,41 @@
 # Changelog
 
 
+## v0.0.9
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.8...v0.0.9)
+
+### 🚀 Enhancements
+
+- Added equal validator ([28de78f](https://github.com/hiperf/validate/commit/28de78f))
+- Added match validator ([3a1ac13](https://github.com/hiperf/validate/commit/3a1ac13))
+- Added max validator ([abb16fa](https://github.com/hiperf/validate/commit/abb16fa))
+- Added maxLength validator ([872a324](https://github.com/hiperf/validate/commit/872a324))
+
+### 🩹 Fixes
+
+- Menu-validators sort order ([bd90838](https://github.com/hiperf/validate/commit/bd90838))
+- Added missing errors to en.json ([33ca4f0](https://github.com/hiperf/validate/commit/33ca4f0))
+- Menu validators order ([38c89a2](https://github.com/hiperf/validate/commit/38c89a2))
+
+### 📖 Documentation
+
+- Readme update ([11870de](https://github.com/hiperf/validate/commit/11870de))
+- Updated package.json description ([d0a2e3e](https://github.com/hiperf/validate/commit/d0a2e3e))
+
+### 🏡 Chore
+
+- Refactor, added new validators imports ([b6012aa](https://github.com/hiperf/validate/commit/b6012aa))
+- Stats.json generate ([77cfa99](https://github.com/hiperf/validate/commit/77cfa99))
+
+### ✅ Tests
+
+- **min:** Updated error ([293e172](https://github.com/hiperf/validate/commit/293e172))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.8
 
 [compare changes](https://github.com/hiperf/validate/compare/v0.0.7...v0.0.8)
