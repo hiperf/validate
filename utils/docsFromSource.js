@@ -19,8 +19,8 @@ const dirDocs = path.resolve(__dirname, '../docs/');
 			let markdown = await jsdocToMarkdown.render({ files: path.resolve(dirValidators, fileName) });
 			const name = fileName.replace('.js', '');
 
-			menu.push({ text: name, link: `/validators/${name}` }),
-				markdown = `# ${name}\n${markdown}`
+			menu.push({ text: name, link: `/validators/${name}` });
+			markdown = `# ${name}\n${markdown}`;
 
 			await fs.promises.writeFile(path.resolve(dirDocs, `validators/${name}.md`), markdown);
 
@@ -28,18 +28,11 @@ const dirDocs = path.resolve(__dirname, '../docs/');
 		}));
 	}
 
-	// Sort menu items by alphabet
-	menu.sort(function (a, b) {
-		if (a.text < b.text)
-			return -1;
-		else if (a.text > b.text)
-			return 1;
-
-		return 0;
-	});
-
 	// Wait for all tasks
 	await Promise.all(promises);
+
+	// Sort menu items by alphabet
+	menu.sort((a, b) => a.text.localeCompare(b.text));
 
 	// Save
 	await fs.promises.writeFile(
