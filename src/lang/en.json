@@ -14,5 +14,5 @@
 	"minLength": "Min length is \"%e\"",
     "validator-config-value": "Validator \"%v\" config is an object, \"value\" key is required",
     "unknown-validator": "Unknown validator \"%v\"",
-    "required": "Field is required"
+    "required": "\"%v\" field is required"
 }

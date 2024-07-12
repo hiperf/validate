@@ -272,3 +272,36 @@ test('Locales test', () => {
 	f(cjs);
 	f(es);
 });
+
+
+test('required test', () => {
+	function f(validate) {
+		const schema = {
+			message: { isString: true }
+		};
+		const data = {};
+		
+		const { isValid, errors } = validate(schema, data);
+
+		expect(isValid).toBe(false);
+		expect(errors.length, 'errors is not empty').toBe(1);
+		expect(errors[0], 'errors should contain field name').toContain('message')
+	}
+	f(cjs);
+	f(es);
+});
+
+test('required false test', () => {
+	function f(validate) {
+		const schema = {
+			message: { isString: true, required: false }
+		};
+		const data = {};
+		const { isValid, errors } = validate(schema, data);
+
+		expect(isValid).toBe(true);
+		expect(errors.length, 'errors is empty').toBe(0);
+	}
+	f(cjs);
+	f(es);
+});
