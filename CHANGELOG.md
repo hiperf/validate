@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.0.10
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.9...v0.0.10)
+
+### 🩹 Fixes
+
+- Required error now display field name ([de8184b](https://github.com/hiperf/validate/commit/de8184b))
+- Updated isOneOf error message ([a1dbfe8](https://github.com/hiperf/validate/commit/a1dbfe8))
+
+### ✅ Tests
+
+- **equal:** Added more detailed tests ([cb48c85](https://github.com/hiperf/validate/commit/cb48c85))
+- **isArray:** Added more detailed tests ([c3b2768](https://github.com/hiperf/validate/commit/c3b2768))
+- **isBoolean:** Added more detailed tests ([d214bd8](https://github.com/hiperf/validate/commit/d214bd8))
+- **isEmail:** Added more detailed tests ([01cc744](https://github.com/hiperf/validate/commit/01cc744))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.9
 
 [compare changes](https://github.com/hiperf/validate/compare/v0.0.8...v0.0.9)

@@ -1,6 +1,6 @@
 {
     "name": "@hiperf/validate",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "description": "Simple. Ultra lightweight. Data validation solution.",
     "keywords": [
         "validation",
