@@ -13,6 +13,7 @@
         "type": "git",
         "url": "git+https://github.com/hiperf/validate.git"
     },
+	"homepage": "https://hiperf.github.io/validate/",
     "license": "MIT",
     "exports": {
         ".": {
