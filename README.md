@@ -1,8 +1,8 @@
 # @hiperf/validate
 
-⚡ Simple. Ultra lightweight. Data validation solution.
+![Hero image](https://raw.githubusercontent.com/hiperf/validate/main/hero.webp)
 
-[Read documentation](https://hiperf.github.io/validate/)
+⚡ Simple. Ultra lightweight. Data validation solution.
 
 ### Key features
 
@@ -13,3 +13,5 @@
 - Internationalization
 - Zero dependencies
 - Unit tested
+
+[🔗 Read documentation](https://hiperf.github.io/validate/)
