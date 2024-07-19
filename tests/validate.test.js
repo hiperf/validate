@@ -25,7 +25,6 @@ function positive(validate) {
 					let errors = [];
 
 					if (typeof dataValue != 'number') {
-						isValid = false;
 						errors.push('This is not a number');
 					} else if (dataValue < 5 || dataValue > 10) {
 						errors.push('The number must be from 5 to 10');
@@ -48,6 +47,7 @@ function positive(validate) {
 			isBoolean: true,
 		},
 		name: {
+			match: /^.{3,}$/,
 			minLength: 3,
 			isString: true,
 		},
@@ -228,9 +228,7 @@ test('Custom', () => {
 			}
 		};
 		
-		const data = {
-			message: '🐶 woof!'
-		};
+		const data = {};
 		
 		const { isValid, errors } = validate(schema, data, { validators, locales });
 
@@ -240,7 +238,6 @@ test('Custom', () => {
 	f(cjs);
 	f(es);
 });
-
 
 test('Locales test', () => {
 	function f(validate) {
@@ -272,7 +269,6 @@ test('Locales test', () => {
 	f(cjs);
 	f(es);
 });
-
 
 test('required test', () => {
 	function f(validate) {
