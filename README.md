@@ -1,6 +1,6 @@
 # @hiperf/validate
 
-![Hero image](https://raw.githubusercontent.com/hiperf/validate/main/hero.webp)
+![Hero image](https://raw.githubusercontent.com/hiperf/validate/main/hero.webp?0)
 
 ⚡ Simple. Ultra lightweight. Data validation solution.
 
