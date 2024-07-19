@@ -1,5 +1,6 @@
 // This file is imported by rollup config and injected inside scripts
 // Base validator
+// @ts-nocheck
 
 /**
  * Get validator by id
@@ -96,10 +97,7 @@ export default function(schema, data, options = {}) {
 			let validatorConfigValue = validatorConfig;
 
 			// Check if validatorConfig is an object
-			if (isObject(validatorConfig)) {
-				if (!('value' in validatorConfig))
-					throw new Error(d('validator-config-value', { v: validatorName }, lang, userLocales, libLocales));
-
+			if (isObject(validatorConfig) && ('value' in validatorConfig)) {
 				validatorConfigValue = validatorConfig.value;
 			}
 
