@@ -1,6 +1,6 @@
 {
     "name": "@hiperf/validate",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "description": "Simple. Ultra lightweight. Data validation solution.",
     "keywords": [
         "validation",
@@ -13,7 +13,7 @@
         "type": "git",
         "url": "git+https://github.com/hiperf/validate.git"
     },
-	"homepage": "https://hiperf.github.io/validate/",
+    "homepage": "https://hiperf.github.io/validate/",
     "license": "MIT",
     "exports": {
         ".": {

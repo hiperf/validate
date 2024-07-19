@@ -1,6 +1,41 @@
 # Changelog
 
 
+## v0.0.11
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.10...v0.0.11)
+
+### 💅 Refactors
+
+- Simplified getError util ([dc36167](https://github.com/hiperf/validate/commit/dc36167))
+- Simplified validate-base ([1712587](https://github.com/hiperf/validate/commit/1712587))
+
+### 📖 Documentation
+
+- Added hero image to readme ([02f5272](https://github.com/hiperf/validate/commit/02f5272))
+
+### 🏡 Chore
+
+- **package.json:** Added homepage url ([a5d4599](https://github.com/hiperf/validate/commit/a5d4599))
+- Added hero image file ([389ff89](https://github.com/hiperf/validate/commit/389ff89))
+
+### ✅ Tests
+
+- **isNumber:** Added more detail test ([58a6164](https://github.com/hiperf/validate/commit/58a6164))
+- **isObject:** Added more detailed test ([24bb45c](https://github.com/hiperf/validate/commit/24bb45c))
+- **isOneOf:** Added more detailed test ([36bde9c](https://github.com/hiperf/validate/commit/36bde9c))
+- **isString:** Added more detailed test ([33761ab](https://github.com/hiperf/validate/commit/33761ab))
+- **match:** Added more detailed test ([f052537](https://github.com/hiperf/validate/commit/f052537))
+- **max:** Added more detailed test ([07d1e39](https://github.com/hiperf/validate/commit/07d1e39))
+- **maxLength:** Added more detailed test ([3715c21](https://github.com/hiperf/validate/commit/3715c21))
+- **min:** Added more detailed test ([224c1cd](https://github.com/hiperf/validate/commit/224c1cd))
+- **minLength:** Added more detailed test ([214fa89](https://github.com/hiperf/validate/commit/214fa89))
+- **validate.test:** Added match check, refactor ([63c82db](https://github.com/hiperf/validate/commit/63c82db))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.10
 
 [compare changes](https://github.com/hiperf/validate/compare/v0.0.9...v0.0.10)
