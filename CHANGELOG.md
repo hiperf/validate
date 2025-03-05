@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v0.0.12
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.11...v0.0.12)
+
+### 🚀 Enhancements
+
+- Added ability to set custom field name for default error messages by using fieldName prop ([ec6a970](https://github.com/hiperf/validate/commit/ec6a970))
+
+### 💅 Refactors
+
+- Comment typo fix ([7627e0c](https://github.com/hiperf/validate/commit/7627e0c))
+
+### 📖 Documentation
+
+- Fixed hero image transparency ([27714dc](https://github.com/hiperf/validate/commit/27714dc))
+
+### 🏡 Chore
+
+- Updated vitest to v2.1 ([89832f1](https://github.com/hiperf/validate/commit/89832f1))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.11
 
 [compare changes](https://github.com/hiperf/validate/compare/v0.0.10...v0.0.11)
