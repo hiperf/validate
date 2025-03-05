@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,ae as l}from"./chunks/framework.BcVXHrU8.js";const o=JSON.parse('{"title":"Slim version","description":"","frontmatter":{},"headers":[],"relativePath":"slim.md","filePath":"slim.md"}'),t={name:"slim.md"};function h(e,s,p,k,r,d){return n(),a("div",null,s[0]||(s[0]=[l("",6)]))}const c=i(t,[["render",h]]);export{o as __pageData,c as default};
