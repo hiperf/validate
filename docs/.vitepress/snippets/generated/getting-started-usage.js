@@ -4,13 +4,14 @@ const schema = {
     name: {
         minLength: 3,
         isString: true,
+		fieldName: 'Your name' // You can set custom field name that will be displayed in default error messages
     },
     age: {
         min: {
             value: 18,
             error: 'Minimal age is 18 y.o.' // Custom error message
         },
-        isNumber: true
+        isNumber: true,
     },
     email: {
         isEmail: true,
@@ -28,7 +29,7 @@ const schema = {
 };
 
 const data = {
-    name: 'John Doe, Jr.',
+    name: 'J',
     age: 15,
     email: 'john.doe.jr@example.com',
 	message: '🐶 woof!'
@@ -37,7 +38,8 @@ const data = {
 const { isValid, errors } = validate(schema, data);
 // isValid = false 
 // errors = [
+//     'Your name: Min length is "3"',
 //     'Minimal age is 18 y.o.',
-//     'Message should contain cat emoji! 😾'
+//     'message: Message should contain cat emoji! 😾'
 // ]
 

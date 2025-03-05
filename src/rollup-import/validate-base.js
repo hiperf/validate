@@ -70,12 +70,15 @@ export default function(schema, data, options = {}) {
 	for (let fieldName in schema) {
 		const schemaItem = schema[fieldName];
 		const isRequired = 'required' in schemaItem ? schemaItem.required : true;
+		let customFieldName = 'fieldName' in schemaItem ? schemaItem.fieldName : fieldName;
 		let dataValue;
+
+		
 
 		// Id schema key does not exist in data
 		if (!data.hasOwnProperty(fieldName)) {
 			// If data key is required
-			if (isRequired) errors.push(d('required', { v: fieldName }, lang, userLocales, libLocales));
+			if (isRequired) errors.push(d('required', { v: customFieldName }, lang, userLocales, libLocales));
 			continue;
 		}
 
@@ -84,8 +87,8 @@ export default function(schema, data, options = {}) {
 
 		// Iterate schema item keys
 		for (let validatorName in schemaItem) {
-			// Skip loop if validatorName is a reserved word ['required']
-			if (validatorName == 'required') continue;
+			// Skip loop if validatorName is a reserved word e.g. ['required']
+			if (validatorName == 'required' || validatorName == 'fieldName') continue;
 
 			const validator = getValidator(validatorName, userValidators, libValidators);
 
@@ -113,7 +116,7 @@ export default function(schema, data, options = {}) {
 					// Check that custom validator return correct data
 					// * errors type is not checked
 					if (!Array.isArray(resultErrors)) {
-						throw new Error(`${fieldName}: Custom validator should return array of errors`);
+						throw new Error(`${customFieldName}: Custom validator should return array of errors`);
 					}
 
 					// Push errors from custom validator
@@ -131,11 +134,11 @@ export default function(schema, data, options = {}) {
 							validatorConfigValue,
 							validatorConfig,
 							validatorName,
-							fieldName,
 							dataValue,
 							lang,
 							userLocales,
-							libLocales
+							libLocales,
+							fieldName: customFieldName,
 						})
 					);
 				}
