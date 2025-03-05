@@ -29,7 +29,7 @@ function getValidator(name, userData = {}, libData = {}) {
  */
 
 /**
- * Shema validator
+ * Schema validator
  * @param {Object} schema - validation schema
  * @param {Object} data - income values
  * @param {ValidateOptions} options - validate options
