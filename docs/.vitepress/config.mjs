@@ -29,6 +29,7 @@ export default defineConfig({
 				items: [
 					{ text: 'Getting started', link: '/getting-started' },
 					{ text: 'Custom validation methods', link: '/custom-validation-methods' },
+					{ text: 'Detailed errors', link: '/detailed-errors' },
 					{ text: 'Slim version', link: '/slim' },
 					{ text: 'Create own validate', link: '/create' },
 					{ text: 'Internationalization', link: '/Internationalization' },
