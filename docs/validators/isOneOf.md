@@ -13,5 +13,8 @@ Validate enums
 
 **Example**  
 ```js
-import isOneOf from '@hiperf/validate/isOneOf';isOneOf('Dog', ['Cat','Dog']); // trueisOneOf('Mouse', ['Cat','Dog']); // false
+import isOneOf from '@hiperf/validate/isOneOf';
+
+isOneOf('Dog', ['Cat','Dog']); // true
+isOneOf('Mouse', ['Cat','Dog']); // false
 ```

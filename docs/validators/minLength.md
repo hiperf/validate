@@ -13,5 +13,8 @@ Check for min string length
 
 **Example**  
 ```js
-import minLenght from '@hiperf/validate/minLenght';minLenght('John', 5); // falseminLenght('John', 2); // true
+import minLenght from '@hiperf/validate/minLenght';
+
+minLenght('John', 5); // false
+minLenght('John', 2); // true
 ```

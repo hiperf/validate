@@ -13,5 +13,8 @@ Check that number is <= max value
 
 **Example**  
 ```js
-import max from '@hiperf/validate/max';max(5,7); // truemax(7,5); // false
+import max from '@hiperf/validate/max';
+
+max(5,7); // true
+max(7,5); // false
 ```

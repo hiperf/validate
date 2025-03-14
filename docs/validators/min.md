@@ -13,5 +13,8 @@ Check that number is >= min value
 
 **Example**  
 ```js
-import min from '@hiperf/validate/min';min(5,7); // falsemin(7,5); // true
+import min from '@hiperf/validate/min';
+
+min(5,7); // false
+min(7,5); // true
 ```

@@ -12,5 +12,8 @@ Check if value is Number
 
 **Example**  
 ```js
-import isNumber from '@hiperf/validate/isNumber';isNumber(5); // trueisNumber('f'); // false
+import isNumber from '@hiperf/validate/isNumber';
+
+isNumber(5); // true
+isNumber('f'); // false
 ```

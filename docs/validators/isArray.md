@@ -12,5 +12,8 @@ Check if value is Array
 
 **Example**  
 ```js
-import isArray from '@hiperf/validate/isArray';isArray(['John','Bob']); // trueisArray('John'); // false
+import isArray from '@hiperf/validate/isArray';
+
+isArray(['John','Bob']); // true
+isArray('John'); // false
 ```

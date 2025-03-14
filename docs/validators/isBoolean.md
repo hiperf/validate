@@ -12,5 +12,10 @@ Check if value is Boolean
 
 **Example**  
 ```js
-import isBoolean from '@hiperf/validate/isBoolean';isBoolean(false); // trueisBoolean(true); // trueisBoolean('John'); // falseisBoolean(1); // false
+import isBoolean from '@hiperf/validate/isBoolean';
+
+isBoolean(false); // true
+isBoolean(true); // true
+isBoolean('John'); // false
+isBoolean(1); // false
 ```

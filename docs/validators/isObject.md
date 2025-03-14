@@ -12,5 +12,8 @@ Check if value is Object
 
 **Example**  
 ```js
-import isObject from '@hiperf/validate/isObject';isObject({name: 'John'}); // trueisObject('John'); // false
+import isObject from '@hiperf/validate/isObject';
+
+isObject({name: 'John'}); // true
+isObject('John'); // false
 ```

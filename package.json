@@ -49,16 +49,19 @@
         "vitest": "^2.1.0",
         "vue": "^3.4.31"
     },
+	"peerDependencies": {
+		"rollup": "^4.0.0"
+	},
     "scripts": {
         "test": "vitest --run",
         "test:watch": "vitest",
         "build": "rollup -c",
         "build:production": "rollup -c --config-minify && node ./utils/genDocsVariables.js",
         "build:watch": "rollup -c --watch",
-        "docs": "node ./utils/docsFromSource.js && node ./utils/genDocsSnippetsAndTest.js",
-        "docs:dev": "vitepress dev docs",
+        "docs:prepare": "node ./utils/docsFromSource.js && node ./utils/genDocsSnippetsAndTest.js",
+        "docs:dev": "vitepress dev docs --host",
         "docs:build": "vitepress build docs",
         "docs:preview": "vitepress preview docs",
-        "release": "yarn build:production && yarn docs && yarn docs:build && yarn test && changelogen --release && npm publish && git push --follow-tags"
+        "release": "yarn build:production && yarn docs:prepare && yarn docs:build && yarn test && changelogen --release && npm publish && git push --follow-tags"
     }
 }

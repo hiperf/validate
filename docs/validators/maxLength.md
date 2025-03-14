@@ -13,5 +13,8 @@ Check for max string length
 
 **Example**  
 ```js
-import maxLength from '@hiperf/validate/maxLength';maxLength('John', 5); // falsemaxLength('John', 2); // true
+import maxLength from '@hiperf/validate/maxLength';
+
+maxLength('John', 5); // false
+maxLength('John', 2); // true
 ```

@@ -12,5 +12,8 @@ Check if value is String
 
 **Example**  
 ```js
-import isString from '@hiperf/validate/isString';isString(5); // falseisString('John'); // true
+import isString from '@hiperf/validate/isString';
+
+isString(5); // false
+isString('John'); // true
 ```

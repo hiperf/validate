@@ -13,5 +13,8 @@ Check if value match regular expression
 
 **Example**  
 ```js
-import match from '@hiperf/validate/match';match('cat', /🐈/); // falsematch('Hello 🐈', /🐈/); // true
+import match from '@hiperf/validate/match';
+
+match('cat', /🐈/); // false
+match('Hello 🐈', /🐈/); // true
 ```

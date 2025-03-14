@@ -12,5 +12,8 @@ Check if value is Email
 
 **Example**  
 ```js
-import isEmail from '@hiperf/validate/isEmail';isEmail('John'); // falseisEmail('John@example.com'); // true
+import isEmail from '@hiperf/validate/isEmail';
+
+isEmail('John'); // false
+isEmail('John@example.com'); // true
 ```

@@ -13,5 +13,11 @@ Check if value equal to target value
 
 **Example**  
 ```js
-import equal from '@hiperf/validate/equal';equal(true, true); // trueequal(false, false); // trueequal('5', 5); // falseequal(5, '5'); // falseequal(1, true); // false
+import equal from '@hiperf/validate/equal';
+
+equal(true, true); // true
+equal(false, false); // true
+equal('5', 5); // false
+equal(5, '5'); // false
+equal(1, true); // false
 ```
