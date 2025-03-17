@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.0.14
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.13...v0.0.14)
+
+### 🚀 Enhancements
+
+- Added detailedError option ([85d0b53](https://github.com/hiperf/validate/commit/85d0b53))
+
+### 📖 Documentation
+
+- Added detailed errors docs ([ea8d3ed](https://github.com/hiperf/validate/commit/ea8d3ed))
+
+### 🏡 Chore
+
+- .vitepress/stats.json updated ([4652735](https://github.com/hiperf/validate/commit/4652735))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.13
 
 [compare changes](https://github.com/hiperf/validate/compare/v0.0.12...v0.0.13)
