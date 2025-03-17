@@ -62,6 +62,6 @@
         "docs:dev": "vitepress dev docs --host",
         "docs:build": "vitepress build docs",
         "docs:preview": "vitepress preview docs",
-        "release": "yarn build:production && yarn docs:prepare && yarn docs:build && yarn test && changelogen --release && npm publish && git push --follow-tags"
+        "release": "pnpm build:production && pnpm docs:prepare && pnpm docs:build && pnpm test && changelogen --release && npm publish && git push --follow-tags"
     }
 }

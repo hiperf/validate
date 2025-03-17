@@ -22,16 +22,16 @@ jobs:
         node-version: '18'
 
     - name: Install dependencies
-      run: npm install --global yarn && yarn install
+      run: npm install -g pnpm && pnpm install
 
     - name: Build
-      run: yarn build:production
+      run: pnpm build:production
 
     - name: Build Docs
-      run: yarn docs && yarn docs:build
+      run: pnpm docs:prepare && pnpm docs:build
 
     - name: Tests
-      run: yarn test
+      run: pnpm test
       
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
