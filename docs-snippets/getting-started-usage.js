@@ -19,6 +19,7 @@ const schema = {
     },
     email: {
         isEmail: true,
+		required: false // Field is optional
     },
 	message: {
 		custom(v) {
