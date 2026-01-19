@@ -77,7 +77,15 @@ export default function(schema, data, options = {}) {
 		// Id schema key does not exist in data
 		if (!data.hasOwnProperty(field)) {
 			// If data key is required
-			if (isRequired) errors.push(d('required', { v: fieldName }, lang, userLocales, libLocales));
+			if (isRequired) {
+				const message = d('required', { v: fieldName }, lang, userLocales, libLocales);
+
+				errors.push(detailedErrors ? {
+					field,
+					fieldName,
+					message
+				} : message);
+			}
 			continue;
 		}
 
