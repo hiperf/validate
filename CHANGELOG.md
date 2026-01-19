@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.0.16
+
+[compare changes](https://github.com/hiperf/validate/compare/v0.0.15...v0.0.16)
+
+### 🩹 Fixes
+
+- Added detailedErrors support for required field is missing error ([2be4dab](https://github.com/hiperf/validate/commit/2be4dab))
+
+### 📖 Documentation
+
+- Generated new docs ([c070e34](https://github.com/hiperf/validate/commit/c070e34))
+- Added required field to basic example ([1a9223b](https://github.com/hiperf/validate/commit/1a9223b))
+
+### 🏡 Chore
+
+- Replaced yarn with pnpm ([913f2bd](https://github.com/hiperf/validate/commit/913f2bd))
+
+### ❤️ Contributors
+
+- Hiperf <hiperf.dev@gmail.com>
+
 ## v0.0.15
 
 [compare changes](https://github.com/hiperf/validate/compare/v0.0.14...v0.0.15)
